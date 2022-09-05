@@ -48,7 +48,13 @@ int isarVersion = 1;
 String? currentSpacePath;
 String currentSpacePathPref = 'currentSpacePath';
 
-Future<void> loadSettigns() async {
+///Container Filters
+List<String> containerFilters = ['Area', 'Drawer', 'Shelf', 'Box'];
+
+Future<void> loadAppSettigns() async {
+  //Get Camera descriptions.
+  cameras = await availableCameras();
+
   SharedPreferences prefs = await SharedPreferences.getInstance();
 
   //Default barcode size.

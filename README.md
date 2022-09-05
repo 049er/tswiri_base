@@ -31,8 +31,15 @@ App settings:
  - colorModeEnabled (bool).
  - hasShownGettingStarted (bool).
  - currentSpacePath (String).
+ - containerFilters (List<String>).
 
 
 
 ## Additional information
 Some parts depend on tswiri_database.
+
+
+## Dependencies
+
+ - camera: ^0.10.0+1
+ - provider: ^6.0.3
