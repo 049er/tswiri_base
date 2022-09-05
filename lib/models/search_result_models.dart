@@ -3,9 +3,13 @@ import 'package:tswiri_database/tswiri_app_database/app_database.dart';
 ///Base Result class.
 abstract class Result {
   Result({
+    required this.uid,
     required this.containerUID,
     required this.textSimilarity,
   });
+
+  ///The UID of this result. (type_id)
+  String uid;
 
   ///The containerUID of this result.
   String containerUID;
@@ -18,15 +22,32 @@ abstract class Result {
   String toString() {
     return 'Result: $textSimilarity, $containerUID\n';
   }
+
+  @override
+  bool operator ==(other) {
+    if (other is Result && other.uid == uid) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  @override
+  int get hashCode => uid.hashCode;
 }
 
 ///Name Result.
 class NameResult implements Result {
   NameResult({
+    required this.uid,
     required this.containerUID,
     required this.textSimilarity,
     required this.name,
   });
+
+  ///The UID of this result. (type_id)
+  @override
+  String uid;
 
   ///ContainerUID.
   @override
@@ -48,10 +69,15 @@ class NameResult implements Result {
 ///Description Result.
 class DescriptionResult implements Result {
   DescriptionResult({
+    required this.uid,
     required this.containerUID,
     required this.textSimilarity,
     required this.description,
   });
+
+  ///The UID of this result. (type_id)
+  @override
+  String uid;
 
   ///ContainerUID.
   @override
@@ -73,10 +99,15 @@ class DescriptionResult implements Result {
 ///ContainerTag Result.
 class ContainerTagResult implements Result {
   ContainerTagResult({
+    required this.uid,
     required this.containerUID,
     required this.textSimilarity,
     required this.tag,
   });
+
+  ///The UID of this result. (type_id)
+  @override
+  String uid;
 
   ///ContainerUID.
   @override
@@ -98,11 +129,16 @@ class ContainerTagResult implements Result {
 ///PhotoLabel Result.
 class PhotoLabelResult implements Result {
   PhotoLabelResult({
+    required this.uid,
     required this.containerUID,
     required this.textSimilarity,
     required this.photoLabel,
     required this.photo,
   });
+
+  ///The UID of this result. (type_id)
+  @override
+  String uid;
 
   ///ContainerUID.
   @override
@@ -127,12 +163,17 @@ class PhotoLabelResult implements Result {
 ///ObjectLabel Result.
 class ObjectLabelResult implements Result {
   ObjectLabelResult({
+    required this.uid,
     required this.containerUID,
     required this.textSimilarity,
     required this.objectLabel,
     required this.mlObject,
     required this.photo,
   });
+
+  ///The UID of this result. (type_id)
+  @override
+  String uid;
 
   ///ContainerUID.
   @override
@@ -160,11 +201,16 @@ class ObjectLabelResult implements Result {
 ///MLPhotoLabel Result.
 class MLPhotoLabelResult implements Result {
   MLPhotoLabelResult({
+    required this.uid,
     required this.containerUID,
     required this.textSimilarity,
     required this.mlPhotoLabel,
     required this.photo,
   });
+
+  ///The UID of this result. (type_id)
+  @override
+  String uid;
 
   ///ContainerUID.
   @override
@@ -189,12 +235,17 @@ class MLPhotoLabelResult implements Result {
 ///MLObjectLabel Result.
 class MLObjectLabelResult implements Result {
   MLObjectLabelResult({
+    required this.uid,
     required this.containerUID,
     required this.textSimilarity,
     required this.mlObjectLabel,
     required this.mlObject,
     required this.photo,
   });
+
+  ///The UID of this result. (type_id)
+  @override
+  String uid;
 
   ///ContainerUID.
   @override
@@ -222,12 +273,17 @@ class MLObjectLabelResult implements Result {
 ///MLTextResult Result.
 class MLTextResult implements Result {
   MLTextResult({
+    required this.uid,
     required this.containerUID,
     required this.textSimilarity,
     required this.mlText,
     required this.mlTextElement,
     required this.photo,
   });
+
+  ///The UID of this result. (type_id)
+  @override
+  String uid;
 
   ///ContainerUID.
   @override

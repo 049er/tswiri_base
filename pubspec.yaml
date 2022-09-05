@@ -11,11 +11,25 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  google_mlkit_barcode_scanning: ^0.3.0
+  google_mlkit_image_labeling: ^0.3.0
+  google_mlkit_object_detection: ^0.4.0
+  google_mlkit_text_recognition: ^0.3.0
+  camera: ^0.10.0+1
+  path_provider: ^2.0.11
+  provider: ^6.0.3
+  shared_preferences: ^2.0.15
+  googleapis: ^9.1.0
+  googleapis_auth: ^1.3.1
+  google_sign_in: ^5.4.1
   
   tswiri_database:
     git:
       url: https://github.com/TswiriSoftware/tswiri_database.git
       ref: master # branch name
+  http: ^0.13.5
+  image: ^3.2.0
 
 dev_dependencies:
   flutter_test:
