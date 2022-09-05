@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tswiri_base/functions/capitalize_first_character.dart';
-import 'package:tswiri_base/widgets/sunbird_filter_chip.dart';
 
-import '../colors/colors.dart';
+import 'package:tswiri_base/colors/colors.dart';
+import 'package:tswiri_base/widgets/general/sunbird_filter_chip.dart';
 
 class SearchTextField extends StatefulWidget {
   const SearchTextField({

@@ -30,6 +30,7 @@ dependencies:
       ref: master # branch name
   http: ^0.13.5
   image: ^3.2.0
+  string_similarity: ^2.0.0
 
 dev_dependencies:
   flutter_test:

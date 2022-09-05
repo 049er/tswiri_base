@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../colors/colors.dart';
+import 'package:tswiri_base/colors/colors.dart';
 
 class CustomTextField extends StatefulWidget {
   ///   CustomTextField.

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../colors/colors.dart';
+import 'package:tswiri_base/colors/colors.dart';
 
 class CustomFilterChip extends StatelessWidget {
   ///   Chip used to display a Filter.
