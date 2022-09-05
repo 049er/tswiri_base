@@ -35,4 +35,4 @@ App settings:
 
 
 ## Additional information
-Depends on tswiri_database.
+Some parts depend on tswiri_database.
