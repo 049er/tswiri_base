@@ -4,19 +4,19 @@ import 'package:flutter/material.dart';
 const MaterialColor sunbirdOrange = MaterialColor(
   _sunbirdOrangePrimaryValue,
   <int, Color>{
-    50: Color(0xFFFFE8E4),
-    100: Color(0xFFFEC5BB),
-    200: Color(0xFFFE9F8E),
-    300: Color(0xFFFE7860),
-    400: Color(0xFFFD5B3E),
+    50: Color(0xFFFFE5E0),
+    100: Color(0xFFFFBDB3),
+    200: Color(0xFFFF9280),
+    300: Color(0xFFFF664D),
+    400: Color(0xFFFF4526),
     500: Color(_sunbirdOrangePrimaryValue),
-    600: Color(0xFFFD3819),
-    700: Color(0xFFFC3014),
-    800: Color(0xFFFC2811),
-    900: Color(0xFFFC1B09),
+    600: Color(0xFFFF2000),
+    700: Color(0xFFFF1B00),
+    800: Color(0xFFFF1600),
+    900: Color(0xFFFF0D00),
   },
 );
-const int _sunbirdOrangePrimaryValue = 0xFFfd3e1c;
+const int _sunbirdOrangePrimaryValue = 0xFFFF2400;
 
 const MaterialColor background = MaterialColor(
   _backgroundPrimaryValue,
