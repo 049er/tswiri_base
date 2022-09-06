@@ -6,6 +6,7 @@ import 'package:tswiri_base/colors/colors.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
 import 'package:tswiri_base/widgets/ml_kit/barcode_import/barcode_import_scanner.dart';
 import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/tswiri_app_database/collections/barcode_batch/barcode_batch.dart';
 
 class GeneratorView extends StatefulWidget {
   const GeneratorView({Key? key}) : super(key: key);
@@ -37,8 +38,10 @@ class _GeneratorViewState extends State<GeneratorView> {
   late List<BarcodeBatch> barcodeBatches =
       isar!.barcodeBatchs.where().findAllSync();
 
-  final TextEditingController _batchSizeController = TextEditingController();
-  final FocusNode _batchSizeNode = FocusNode();
+  final TextEditingController _batchHeightController = TextEditingController();
+  final TextEditingController _batchWidthController = TextEditingController();
+  final FocusNode _batchHeightNode = FocusNode();
+  final FocusNode _batchWidthNode = FocusNode();
   bool isEditingSize = false;
 
   @override
@@ -436,26 +439,26 @@ class _GeneratorViewState extends State<GeneratorView> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  'Size:',
+                  'Height:',
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
                 Builder(builder: (context) {
                   if (isEditingSize == true) {
-                    _batchSizeController.text = batch.size.toString();
+                    _batchHeightController.text = batch.height.toString();
                     return Row(
                       children: [
                         SizedBox(
                           width: 100,
                           child: TextField(
-                            controller: _batchSizeController,
-                            focusNode: _batchSizeNode,
+                            controller: _batchHeightController,
+                            focusNode: _batchHeightNode,
                             keyboardType: TextInputType.number,
                             onSubmitted: (value) {
                               double newSize =
-                                  double.tryParse(value) ?? batch.size;
+                                  double.tryParse(value) ?? batch.height;
 
-                              if (newSize != batch.size) {
-                                batch.size = newSize;
+                              if (newSize != batch.height) {
+                                batch.height = newSize;
 
                                 isar!.writeTxnSync((isar) => isar.barcodeBatchs
                                     .putSync(batch, replaceOnConflict: true));
@@ -469,7 +472,7 @@ class _GeneratorViewState extends State<GeneratorView> {
                                 isar!.writeTxnSync((isar) {
                                   for (CatalogedBarcode barcode
                                       in relatedBarcodes) {
-                                    barcode.size = newSize;
+                                    barcode.height = newSize;
                                     isar.catalogedBarcodes.putSync(barcode,
                                         replaceOnConflict: true);
                                   }
@@ -495,13 +498,98 @@ class _GeneratorViewState extends State<GeneratorView> {
                     onTap: () {
                       setState(() {
                         isEditingSize = true;
-                        _batchSizeNode.requestFocus();
+                        _batchHeightNode.requestFocus();
                       });
                     },
                     child: Column(
                       children: [
                         Text(
-                          batch.size.toString(),
+                          batch.height.toString(),
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                        Text(
+                          '(tap to edit)',
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                      ],
+                    ),
+                  );
+                }),
+              ],
+            ),
+            const Divider(
+              thickness: 0.2,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  'Width:',
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+                Builder(builder: (context) {
+                  if (isEditingSize == true) {
+                    _batchWidthController.text = batch.width.toString();
+                    return Row(
+                      children: [
+                        SizedBox(
+                          width: 100,
+                          child: TextField(
+                            controller: _batchWidthController,
+                            focusNode: _batchWidthNode,
+                            keyboardType: TextInputType.number,
+                            onSubmitted: (value) {
+                              double newSize =
+                                  double.tryParse(value) ?? batch.width;
+
+                              if (newSize != batch.width) {
+                                batch.width = newSize;
+
+                                isar!.writeTxnSync((isar) => isar.barcodeBatchs
+                                    .putSync(batch, replaceOnConflict: true));
+
+                                List<CatalogedBarcode> relatedBarcodes = isar!
+                                    .catalogedBarcodes
+                                    .filter()
+                                    .batchIDEqualTo(batch.id)
+                                    .findAllSync();
+
+                                isar!.writeTxnSync((isar) {
+                                  for (CatalogedBarcode barcode
+                                      in relatedBarcodes) {
+                                    barcode.width = newSize;
+                                    isar.catalogedBarcodes.putSync(barcode,
+                                        replaceOnConflict: true);
+                                  }
+                                });
+
+                                _updateBarcodeBatches();
+                              }
+
+                              setState(() {
+                                isEditingSize = false;
+                              });
+                            },
+                          ),
+                        ),
+                        Text(
+                          'mm',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        )
+                      ],
+                    );
+                  }
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isEditingSize = true;
+                        _batchWidthNode.requestFocus();
+                      });
+                    },
+                    child: Column(
+                      children: [
+                        Text(
+                          batch.width.toString(),
                           style: Theme.of(context).textTheme.bodyLarge,
                         ),
                         Text(
@@ -627,7 +715,8 @@ class _GeneratorViewState extends State<GeneratorView> {
     int endUID = startUID + numberOfBarocdes - 1;
 
     BarcodeBatch newBarcodeBatch = BarcodeBatch()
-      ..size = barcodeSize
+      ..width = barcodeSize
+      ..height = barcodeSize
       ..timestamp = timestamp
       ..rangeStart = startUID
       ..rangeEnd = endUID
@@ -641,7 +730,8 @@ class _GeneratorViewState extends State<GeneratorView> {
         String barcodeUID = '${i}_$timestamp';
         isar.catalogedBarcodes.putSync(CatalogedBarcode()
           ..barcodeUID = barcodeUID
-          ..size = barcodeSize
+          ..width = barcodeSize
+          ..height = barcodeSize
           ..batchID = batchID);
       }
     });
@@ -661,7 +751,8 @@ class _GeneratorViewState extends State<GeneratorView> {
     scannedBarcodeIDs.sort();
 
     BarcodeBatch newBarcodeBatch = BarcodeBatch()
-      ..size = barcodeSize
+      ..width = barcodeSize
+      ..height = barcodeSize
       ..timestamp = timestamp
       ..imported = true
       ..rangeStart = scannedBarcodeIDs.first
@@ -675,7 +766,8 @@ class _GeneratorViewState extends State<GeneratorView> {
         isar.catalogedBarcodes.putSync(
           CatalogedBarcode()
             ..barcodeUID = scannedBarcode
-            ..size = defaultBarcodeSize
+            ..width = defaultBarcodeSize
+            ..height = defaultBarcodeSize
             ..batchID = batchID,
         );
       }
@@ -696,7 +788,7 @@ class _GeneratorViewState extends State<GeneratorView> {
       MaterialPageRoute(
         builder: (context) => PdfView(
           barcodeUIDs: barcodeUIDs,
-          size: barcodeBatch.size,
+          size: barcodeBatch.width,
           start: barcodeBatch.rangeStart,
           end: barcodeBatch.rangeEnd,
         ),

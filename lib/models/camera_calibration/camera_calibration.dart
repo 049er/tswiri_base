@@ -35,7 +35,7 @@ class CameraCalibration {
 
       if (barcodeProperty != null) {
         //Set barcode size
-        barcodeSize = barcodeProperty.size * m.sqrt(2);
+        barcodeSize = barcodeProperty.diagonalSideLength();
       }
     }
 

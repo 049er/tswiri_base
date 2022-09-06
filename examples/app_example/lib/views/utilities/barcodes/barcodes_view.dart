@@ -151,7 +151,7 @@ class _BarcodesViewState extends State<BarcodesView> {
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 Text(
-                  '${barcodeProperty.size} x ${barcodeProperty.size} mm',
+                  '${barcodeProperty.width} x ${barcodeProperty.height} mm',
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ],

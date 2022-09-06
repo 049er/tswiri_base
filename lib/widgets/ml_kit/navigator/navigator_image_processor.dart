@@ -223,7 +223,7 @@ void navigationImageProcessor(List init) {
           barcodeDiagonalLength = barcodeProperties
               .firstWhere(
                   (element) => element.barcodeUID == barcode.displayValue)
-              .size;
+              .diagonalSideLength();
         }
 
         //Calculate the startBarcodeMMperPX.

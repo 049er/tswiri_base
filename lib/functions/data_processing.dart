@@ -95,7 +95,7 @@ double calculateRealUnit({
       .indexWhere((element) => element.barcodeUID == barcodeUID);
 
   if (index != -1) {
-    barcodeDiagonalLength = barcodeProperties[index].size;
+    barcodeDiagonalLength = barcodeProperties[index].diagonalSideLength();
   }
 
   return diagonalLength / barcodeDiagonalLength;
@@ -118,7 +118,7 @@ double calculateDistanceFromCamera({
       .indexWhere((element) => element.barcodeUID == barcodeUID);
 
   if (index != -1) {
-    barcodeDiagonalLength = barcodeProperties[index].size;
+    barcodeDiagonalLength = barcodeProperties[index].diagonalSideLength();
   }
 
   //Calculate the distance from the camera

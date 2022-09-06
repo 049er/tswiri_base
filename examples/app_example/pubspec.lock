@@ -705,7 +705,7 @@ packages:
     description:
       path: "."
       ref: master
-      resolved-ref: "32a2423feffc3ac6bdab3f29156e1c9d92f017f1"
+      resolved-ref: "6adc121b8cf5da068fde4da07b7b42472046f99c"
       url: "https://github.com/TswiriSoftware/tswiri_database.git"
     source: git
     version: "0.0.2"
