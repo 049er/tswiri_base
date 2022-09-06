@@ -93,10 +93,10 @@ class ImageData {
     //2. Photo Name.
     int photoName = DateTime.now().millisecondsSinceEpoch;
     //3. Create the image file path.
-    String photoFilePath = '${appPhotoDirectory!.path}/$photoName.$extention';
+    String photoFilePath = '${photoDirectory!.path}/$photoName.$extention';
     //4. Create image thumbnail path.
     String photoThumbnailPath =
-        '${appPhotoDirectory!.path}/${photoName}_thumbnail.$extention';
+        '${photoDirectory!.path}/${photoName}_thumbnail.$extention';
     //5. Load Image in memory.
     img.Image referenceImage = img.decodeJpg(photoFile.readAsBytesSync())!;
     //6. Create Thumbnail.
@@ -118,7 +118,7 @@ class ImageData {
       ..photoSize = size;
 
     int photoID = 0;
-    isareTxnSync((isar) {
+    isar!.writeTxnSync((isar) {
       photoID = isar.photos.putSync(newPhoto);
     });
 

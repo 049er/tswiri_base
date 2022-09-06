@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:tswiri_base/colors/colors.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
-import 'package:tswiri_base/widgets/photo/photo_labeling/ml_photo_labeling_view.dart';
+import 'package:tswiri_base/widgets/ml_kit/photo_labeling/ml_photo_labeling_view.dart';
 
 class MLPhotoLabelingCameraView extends StatefulWidget {
   const MLPhotoLabelingCameraView({Key? key}) : super(key: key);

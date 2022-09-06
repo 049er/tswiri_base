@@ -7,8 +7,8 @@ import 'package:flutter_isolate/flutter_isolate.dart';
 import 'package:google_mlkit_barcode_scanning/google_mlkit_barcode_scanning.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
-import 'package:tswiri_base/widgets/ml_kit_widgets/navigator/navigator_camera_view.dart';
-import 'package:tswiri_base/widgets/ml_kit_widgets/navigator/navigator_painter.dart';
+import 'package:tswiri_base/widgets/ml_kit/navigator/navigator_camera_view.dart';
+import 'package:tswiri_base/widgets/ml_kit/navigator/navigator_painter.dart';
 import 'package:tswiri_database/tswiri_app_database/app_database.dart';
 
 // ignore: depend_on_referenced_packages
@@ -316,8 +316,7 @@ class _NavigatorViewState extends State<NavigatorView> {
         for (int gridID in gridIDs) {
           CatalogedGrid? catalogedGrid = isar!.catalogedGrids.getSync(gridID);
           if (catalogedGrid != null) {
-            CatalogedContainer? catalogedContainer = isar!
-                .catalogedContainersisar
+            CatalogedContainer? catalogedContainer = isar!.catalogedContainers
                 .filter()
                 .barcodeUIDMatches(catalogedGrid.barcodeUID)
                 .findFirstSync();

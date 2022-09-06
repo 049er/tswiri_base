@@ -8,9 +8,10 @@ import 'package:tswiri_base/models/image/image_data.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
 import 'package:tswiri_base/widgets/general/custom_text_field.dart';
 import 'package:tswiri_base/widgets/general/tag_text_predictor.dart';
-import 'package:tswiri_base/widgets/ml_kit_widgets/barcode_scanner/single_scanner_view.dart';
-import 'package:tswiri_base/widgets/ml_kit_widgets/navigator/navigator_view.dart';
-import 'package:tswiri_base/widgets/photo/photo_labeling/ml_photo_labeling_camera_view.dart';
+import 'package:tswiri_base/widgets/ml_kit/barcode_scanner/single_scanner_view.dart';
+import 'package:tswiri_base/widgets/ml_kit/navigator/navigator_view.dart';
+import 'package:tswiri_base/widgets/ml_kit/photo_labeling/ml_photo_labeling_camera_view.dart';
+
 import 'package:tswiri_database/tswiri_app_database/app_database.dart';
 import 'package:tswiri_base/widgets/photo/photo_edit_view.dart';
 import 'package:tswiri_base/widgets/containers/parent_card.dart';

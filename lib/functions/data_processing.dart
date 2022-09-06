@@ -246,7 +246,7 @@ List<CatalogedCoordinate> generateCoordinates(
     coordinates.add(
       CatalogedCoordinate()
         ..barcodeUID = isar!.catalogedGrids.getSync(gridUID)!.barcodeUID
-        ..coordinate = isaror3(0, 0, 0)
+        ..coordinate = vm.Vector3(0, 0, 0)
         ..gridUID = gridUID
         ..rotation = null
         ..timestamp = DateTime.now().millisecondsSinceEpoch,

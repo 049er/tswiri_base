@@ -1,4 +1,11 @@
+import 'package:example/views/utilities/barcode_generator/generator_view.dart';
+import 'package:example/views/utilities/barcodes/barcodes_view.dart';
+import 'package:example/views/utilities/camera_calibration/calibration_view.dart';
+import 'package:example/views/utilities/container_types/container_types_view.dart';
+import 'package:example/views/utilities/gallery/gallery_view.dart';
+import 'package:example/views/utilities/grid/grids_view.dart';
 import 'package:flutter/material.dart';
+import 'package:tswiri_base/widgets/general/navigation_card.dart';
 
 class UtilitiesView extends StatefulWidget {
   const UtilitiesView({Key? key}) : super(key: key);
@@ -33,8 +40,42 @@ class _UtilitiesViewState extends State<UtilitiesView> {
 
   Widget _body() {
     return Center(
-      child: Column(
-        children: [],
+      child: GridView.count(
+        padding:
+            const EdgeInsets.only(top: 8.0, bottom: 100, left: 8, right: 8),
+        crossAxisCount: 2,
+        children: const [
+          NavigationCard(
+            label: 'Barcodes',
+            icon: Icons.qr_code,
+            viewPage: BarcodesView(),
+          ),
+          NavigationCard(
+            label: 'Barcode Generator',
+            icon: Icons.scanner_sharp,
+            viewPage: GeneratorView(),
+          ),
+          NavigationCard(
+            label: 'Camera Calibration',
+            icon: Icons.camera_sharp,
+            viewPage: CalibrationView(),
+          ),
+          NavigationCard(
+            label: 'Gallery',
+            icon: Icons.photo_sharp,
+            viewPage: GalleryView(),
+          ),
+          NavigationCard(
+            label: 'Container Types',
+            icon: Icons.code_sharp,
+            viewPage: ContainerTypesView(),
+          ),
+          NavigationCard(
+            label: 'Grids',
+            icon: Icons.grid_4x4_sharp,
+            viewPage: GridsView(),
+          ),
+        ],
       ),
     );
   }

@@ -7,7 +7,7 @@ import 'package:tswiri_base/models/search/search_result_models.dart';
 import 'package:tswiri_base/models/search/shopping_cart.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
 import 'package:tswiri_base/widgets/general/sunbird_search_bar.dart';
-import 'package:tswiri_base/widgets/search_widgets/search_widgets.dart';
+import 'package:tswiri_base/widgets/search/search_widgets.dart';
 import 'package:tswiri_database/tswiri_app_database/app_database.dart';
 
 class SearchView extends StatefulWidget {

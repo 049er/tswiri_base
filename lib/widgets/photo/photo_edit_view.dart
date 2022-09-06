@@ -7,7 +7,7 @@ import 'package:tswiri_base/widgets/general/tag_text_predictor.dart';
 import 'package:tswiri_database/tswiri_app_database/app_database.dart';
 import 'package:tswiri_database/tswiri_app_database/functions/get_functions.dart';
 
-import 'photo_labeling/ml_label_photo_painter.dart';
+import '../ml_kit/photo_labeling/ml_label_photo_painter.dart';
 
 class PhotoEditView extends StatefulWidget {
   const PhotoEditView({
@@ -125,7 +125,7 @@ class PhotoEditViewState extends State<PhotoEditView> {
               _imageData.objectLabels.add(newObjectLabel);
             });
 
-            isarriteTxn((isar) => isar.objectLabels.put(newObjectLabel));
+            isar!.writeTxn((isar) => isar.objectLabels.put(newObjectLabel));
           }
         },
       ),

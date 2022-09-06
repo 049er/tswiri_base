@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:tswiri_base/models/containers/container_search_controller.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
 import 'package:tswiri_base/widgets/containers/new_container_card.dart';
-import 'package:tswiri_base/widgets/ml_kit_widgets/barcode_scanner/single_scanner_view.dart';
+import 'package:tswiri_base/widgets/ml_kit/barcode_scanner/single_scanner_view.dart';
 import 'package:tswiri_database/tswiri_app_database/app_database.dart';
 import 'package:tswiri_base/widgets/containers/container_card.dart';
 import 'package:tswiri_base/widgets/general/search_text_field.dart';

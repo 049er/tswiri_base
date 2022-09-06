@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:tswiri_base/colors/colors.dart';
 import 'package:tswiri_base/models/search/search_result_models.dart';
 import 'package:tswiri_base/models/search/shopping_cart.dart';
-import 'package:tswiri_base/widgets/search_widgets/text_painter.dart';
+import 'package:tswiri_base/widgets/search/text_painter.dart';
 
 import 'dart:ui' as ui;
 import 'image_painter.dart';

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tswiri_base/colors/colors.dart';
 import 'package:tswiri_base/functions/capitalize_first_character.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
-import 'package:tswiri_base/widgets/ml_kit_widgets/barcode_scanner/single_scanner_view.dart';
+import 'package:tswiri_base/widgets/ml_kit/barcode_scanner/single_scanner_view.dart';
 import 'package:tswiri_database/tswiri_app_database/app_database.dart';
 
 class NewContainerView extends StatefulWidget {
