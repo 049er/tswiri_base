@@ -6,8 +6,8 @@ import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart
 import 'package:tswiri_base/functions/coordinate_translator.dart';
 import 'package:tswiri_base/models/image/image_data.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
-import 'package:tswiri_database/tswiri_app_database/functions/get_functions.dart';
+import 'package:tswiri_database/functions/get_functions.dart';
+import 'package:tswiri_database/export.dart';
 
 class MLLabelPhotoPainter extends CustomPainter {
   MLLabelPhotoPainter({

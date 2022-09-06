@@ -12,12 +12,13 @@ import 'package:tswiri_base/widgets/ml_kit/barcode_scanner/single_scanner_view.d
 import 'package:tswiri_base/widgets/ml_kit/navigator/navigator_view.dart';
 import 'package:tswiri_base/widgets/ml_kit/photo_labeling/ml_photo_labeling_camera_view.dart';
 
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
 import 'package:tswiri_base/widgets/photo/photo_edit_view.dart';
 import 'package:tswiri_base/widgets/containers/parent_card.dart';
-import 'package:tswiri_database/tswiri_app_database/functions/change_functions.dart';
-import 'package:tswiri_database/tswiri_app_database/functions/delete_functions.dart';
+
 import 'package:example/views/containers/new_container/new_container_view.dart';
+import 'package:tswiri_database/export.dart';
+import 'package:tswiri_database/functions/change_functions.dart';
+import 'package:tswiri_database/functions/delete_functions.dart';
 
 class ContainerView extends StatefulWidget {
   const ContainerView({

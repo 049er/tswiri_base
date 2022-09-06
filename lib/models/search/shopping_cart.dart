@@ -1,8 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/widgets.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
-
+import 'package:tswiri_database/export.dart';
 import 'search_result_models.dart';
 
 class ShoppingCart extends ChangeNotifier {

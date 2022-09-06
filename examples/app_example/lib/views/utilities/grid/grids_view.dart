@@ -5,7 +5,7 @@ import 'package:example/views/utilities/grid/new_grid_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:tswiri_base/colors/colors.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/export.dart';
 
 class GridsView extends StatefulWidget {
   const GridsView({Key? key}) : super(key: key);

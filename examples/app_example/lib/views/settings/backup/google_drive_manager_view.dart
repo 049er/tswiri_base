@@ -10,7 +10,8 @@ import 'package:intl/intl.dart';
 import 'package:googleapis/drive/v3.dart' as drive;
 import 'package:tswiri_base/functions/backup_restore_functions.dart';
 import 'package:tswiri_base/models/backup/google_drive_manager.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/export.dart';
+import 'package:tswiri_database/mobile_database.dart';
 
 class GoogleDriveView extends StatefulWidget {
   const GoogleDriveView({Key? key}) : super(key: key);
@@ -296,7 +297,7 @@ class _GoogleDriveViewState extends State<GoogleDriveView> {
             }
 
             await isar!.close();
-            isar = initiateIsar();
+            isar = initiateMobileIsar();
 
             setState(() {
               _isBusy = false;

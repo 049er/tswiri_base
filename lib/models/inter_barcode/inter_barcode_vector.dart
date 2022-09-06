@@ -3,7 +3,7 @@
 import 'dart:ui';
 import 'package:tswiri_base/functions/data_processing.dart';
 import 'package:tswiri_base/models/inter_barcode/on_image_inter_barcode_data.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/export.dart';
 import 'package:vector_math/vector_math_64.dart';
 
 class InterBarcodeVector {

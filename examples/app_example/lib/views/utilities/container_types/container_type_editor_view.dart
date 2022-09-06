@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:tswiri_base/colors/colors.dart';
 import 'package:tswiri_base/widgets/general/custom_text_field.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/export.dart';
 
 class ContainerTypeEditorView extends StatefulWidget {
   const ContainerTypeEditorView({

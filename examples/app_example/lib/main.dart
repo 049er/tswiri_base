@@ -8,8 +8,10 @@ import 'package:provider/provider.dart';
 import 'package:tswiri_base/models/search/shopping_cart.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
 import 'package:tswiri_base/theme/theme.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
-import 'package:tswiri_database/tswiri_app_database/test_functions/populate_database.dart';
+import 'package:tswiri_database/export.dart';
+import 'package:tswiri_database/functions/create_functions.dart';
+import 'package:tswiri_database/mobile_database.dart';
+import 'package:tswiri_database/test_functions/populate_database.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +29,7 @@ Future<void> main() async {
   await initiatePhotoStorage();
 
   //Initiate Isar.
-  isar = initiateIsar();
+  isar = initiateMobileIsar();
 
   //Populate the database for testing.
   createBasicContainerTypes();

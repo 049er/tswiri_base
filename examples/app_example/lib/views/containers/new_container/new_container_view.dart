@@ -5,7 +5,8 @@ import 'package:tswiri_base/colors/colors.dart';
 import 'package:tswiri_base/functions/capitalize_first_character.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
 import 'package:tswiri_base/widgets/ml_kit/barcode_scanner/single_scanner_view.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/export.dart';
+import 'package:tswiri_database/functions/create_functions.dart';
 
 class NewContainerView extends StatefulWidget {
   ///This view is used to create new containers.

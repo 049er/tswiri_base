@@ -5,8 +5,7 @@ import 'package:numberpicker/numberpicker.dart';
 import 'package:tswiri_base/colors/colors.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
 import 'package:tswiri_base/widgets/ml_kit/barcode_import/barcode_import_scanner.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
-import 'package:tswiri_database/tswiri_app_database/collections/barcode_batch/barcode_batch.dart';
+import 'package:tswiri_database/export.dart';
 
 class GeneratorView extends StatefulWidget {
   const GeneratorView({Key? key}) : super(key: key);

@@ -5,7 +5,7 @@ import 'package:path_provider/path_provider.dart';
 
 import 'package:tswiri_base/colors/colors.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/export.dart';
 
 class SpacesView extends StatefulWidget {
   const SpacesView({Key? key}) : super(key: key);

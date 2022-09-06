@@ -4,7 +4,8 @@ import 'dart:isolate';
 
 import 'package:flutter_archive/flutter_archive.dart';
 import 'package:intl/intl.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/export.dart';
+import 'package:tswiri_database/mobile_database.dart';
 
 Future<void> createBackup(List init) async {
   //1. InitalMessage.
@@ -19,7 +20,7 @@ Future<void> createBackup(List init) async {
   log(photoDirectory, name: 'Photo Directory');
 
   //2. Initiate isar.
-  Isar isar = initiateIsar(directory: isarDirectory, inspector: false);
+  Isar isar = initiateMobileIsar(directory: isarDirectory, inspector: false);
 
   //3. Isar Data Folder.
   Directory isarDataFolder = Directory('$isarDirectory/isar');

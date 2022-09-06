@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:tswiri_base/colors/colors.dart';
 import 'package:tswiri_base/models/image/image_data.dart';
 import 'package:tswiri_base/widgets/general/tag_text_predictor.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
-import 'package:tswiri_database/tswiri_app_database/functions/get_functions.dart';
+import 'package:tswiri_database/export.dart';
+import 'package:tswiri_database/functions/get_functions.dart';
 
 import '../ml_kit/photo_labeling/ml_label_photo_painter.dart';
 

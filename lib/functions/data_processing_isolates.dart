@@ -2,7 +2,7 @@ import 'package:tswiri_base/functions/distinct_by.dart';
 import 'package:tswiri_base/models/inter_barcode/inter_barcode_vector.dart';
 import 'package:tswiri_base/models/inter_barcode/on_image_barcode_data.dart';
 import 'package:tswiri_base/models/inter_barcode/on_image_inter_barcode_data.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/export.dart';
 
 /// Convert onImageInterbarcodeData -> onImageInterbarcodeData-> realInterBarcodeVectors
 List<InterBarcodeVector> createInterBarcodeVectors(

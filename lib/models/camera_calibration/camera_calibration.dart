@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math' as m;
 
 import 'package:tswiri_base/settings/app_settings.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/export.dart';
 
 ///Object used to calibrate the camera.
 class CameraCalibration {

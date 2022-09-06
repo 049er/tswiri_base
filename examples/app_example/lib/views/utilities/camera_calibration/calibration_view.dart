@@ -5,7 +5,7 @@ import 'package:tswiri_base/models/camera_calibration/camera_calibration.dart';
 import 'package:tswiri_base/models/camera_calibration/camera_calibration_painter.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
 import 'package:tswiri_base/widgets/ml_kit/camera_calibration/camera_calibration_view.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/export.dart';
 
 class CalibrationView extends StatefulWidget {
   const CalibrationView({Key? key}) : super(key: key);

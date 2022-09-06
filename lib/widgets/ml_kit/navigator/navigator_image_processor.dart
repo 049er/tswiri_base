@@ -8,7 +8,9 @@ import 'package:tswiri_base/functions/coordinate_translator.dart';
 import 'package:tswiri_base/functions/data_processing.dart';
 import 'package:tswiri_base/models/accelerometer/acceleromter_data.dart';
 import 'package:tswiri_base/models/inter_barcode/on_image_barcode_data.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/export.dart';
+import 'package:tswiri_database/mobile_database.dart';
+
 import 'dart:math' as math;
 
 import 'package:vector_math/vector_math_64.dart' as vm;
@@ -31,7 +33,7 @@ void navigationImageProcessor(List init) {
   ]);
 
   //3. Isar Connection.
-  Isar isar = initiateIsar(directory: isarDirectory, inspector: false);
+  Isar isar = initiateMobileIsar(directory: isarDirectory, inspector: false);
   List<CatalogedBarcode> barcodeProperties =
       isar.catalogedBarcodes.where().findAllSync();
 

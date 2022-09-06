@@ -2,7 +2,7 @@ import 'package:example/views/utilities/container_types/container_type_editor_vi
 import 'package:flutter/material.dart';
 import 'package:tswiri_base/functions/capitalize_first_character.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/export.dart';
 
 class ContainerTypesView extends StatefulWidget {
   const ContainerTypesView({Key? key}) : super(key: key);

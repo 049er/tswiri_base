@@ -1,6 +1,6 @@
 import 'package:string_similarity/string_similarity.dart';
 import 'package:tswiri_base/models/search/search_result_models.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/export.dart';
 
 class SearchController {
   SearchController({

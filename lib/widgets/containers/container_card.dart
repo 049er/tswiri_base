@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tswiri_base/colors/colors.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
-import 'package:tswiri_database/tswiri_app_database/functions/get_functions.dart';
+import 'package:tswiri_database/export.dart';
+import 'package:tswiri_database/functions/get_functions.dart';
 
 class ContainerCard extends StatelessWidget {
   const ContainerCard({

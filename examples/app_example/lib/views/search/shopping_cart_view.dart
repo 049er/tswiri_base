@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:tswiri_base/models/search/search_result_models.dart';
 import 'package:tswiri_base/models/search/shopping_cart.dart';
 import 'package:tswiri_base/widgets/ml_kit/navigator/navigator_view.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/export.dart';
 
 class ShoppingCartView extends StatefulWidget {
   const ShoppingCartView({Key? key}) : super(key: key);

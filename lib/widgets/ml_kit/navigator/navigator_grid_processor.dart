@@ -5,7 +5,8 @@ import 'dart:isolate';
 
 import 'package:tswiri_base/functions/data_processing_isolates.dart';
 import 'package:tswiri_base/models/inter_barcode/inter_barcode_vector.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/export.dart';
+import 'package:tswiri_database/mobile_database.dart';
 import 'package:vector_math/vector_math_64.dart' as vm;
 
 ///This is a isolate that updates positions (improve this over time.)
@@ -24,7 +25,7 @@ void gridProcessor(List init) {
   ]);
 
   //3. Isar Connection.
-  Isar isar = initiateIsar(directory: isarDirectory);
+  Isar isar = initiateMobileIsar(directory: isarDirectory);
   List<CatalogedBarcode> barcodeProperties =
       isar.catalogedBarcodes.where().findAllSync();
 

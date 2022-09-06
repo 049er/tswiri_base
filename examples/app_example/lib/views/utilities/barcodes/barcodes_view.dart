@@ -2,7 +2,7 @@ import 'package:example/views/utilities/barcode_generator/generator_view.dart';
 import 'package:flutter/material.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
 import 'package:tswiri_base/widgets/general/sunbird_search_bar.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/export.dart';
 
 class BarcodesView extends StatefulWidget {
   const BarcodesView({Key? key}) : super(key: key);

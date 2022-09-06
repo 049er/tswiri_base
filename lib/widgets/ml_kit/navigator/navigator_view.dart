@@ -9,8 +9,7 @@ import 'package:sensors_plus/sensors_plus.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
 import 'package:tswiri_base/widgets/ml_kit/navigator/navigator_camera_view.dart';
 import 'package:tswiri_base/widgets/ml_kit/navigator/navigator_painter.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
-
+import 'package:tswiri_database/export.dart';
 // ignore: depend_on_referenced_packages
 import 'package:vector_math/vector_math_64.dart' as vm;
 

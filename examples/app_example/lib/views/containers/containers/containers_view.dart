@@ -7,10 +7,11 @@ import 'package:tswiri_base/models/containers/container_search_controller.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
 import 'package:tswiri_base/widgets/containers/new_container_card.dart';
 import 'package:tswiri_base/widgets/ml_kit/barcode_scanner/single_scanner_view.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+
 import 'package:tswiri_base/widgets/containers/container_card.dart';
 import 'package:tswiri_base/widgets/general/search_text_field.dart';
-import 'package:tswiri_database/tswiri_app_database/functions/delete_functions.dart';
+import 'package:tswiri_database/export.dart';
+import 'package:tswiri_database/functions/delete_functions.dart';
 
 class ContainersView extends StatefulWidget {
   const ContainersView({

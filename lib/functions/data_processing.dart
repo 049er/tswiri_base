@@ -7,7 +7,7 @@ import 'package:tswiri_base/models/inter_barcode/inter_barcode_vector.dart';
 import 'package:tswiri_base/models/inter_barcode/on_image_barcode_data.dart';
 import 'package:tswiri_base/models/inter_barcode/on_image_inter_barcode_data.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/export.dart';
 import 'package:vector_math/vector_math_64.dart' as vm;
 import 'dart:math' as m;
 

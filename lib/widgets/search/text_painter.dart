@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'dart:ui' as ui;
 
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/export.dart';
 
 class MLTextPainter extends CustomPainter {
   MLTextPainter(this.mlTextElement, this.image, this.photoSize);

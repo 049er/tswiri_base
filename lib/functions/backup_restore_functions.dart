@@ -12,7 +12,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:tswiri_base/functions/create_backup.dart';
 import 'package:tswiri_base/functions/restore_backup.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
-import 'package:tswiri_database/tswiri_app_database/app_database.dart';
+import 'package:tswiri_database/export.dart';
+import 'package:tswiri_database/mobile_database.dart';
 
 ///Creates a backup (.zip) of the current Space.
 ///
@@ -121,7 +122,7 @@ void killIsolate(FlutterIsolate? isolate) {
     isolate.kill();
   }
   if (!isar!.isOpen) {
-    isar = initiateIsar(inspector: true, directory: isarDirectory!.path);
+    isar = initiateMobileIsar(inspector: true, directory: isarDirectory!.path);
     log('opening isar');
   }
 }

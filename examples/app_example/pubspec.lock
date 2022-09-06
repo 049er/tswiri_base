@@ -705,10 +705,10 @@ packages:
     description:
       path: "."
       ref: master
-      resolved-ref: "6adc121b8cf5da068fde4da07b7b42472046f99c"
+      resolved-ref: "7eb651aff50990b6706b6a6a90f4223383b92eff"
       url: "https://github.com/TswiriSoftware/tswiri_database.git"
     source: git
-    version: "0.0.2"
+    version: "0.0.1"
   typed_data:
     dependency: transitive
     description:
