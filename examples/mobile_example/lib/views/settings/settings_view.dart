@@ -355,7 +355,7 @@ class _SettingsViewState extends State<SettingsView> {
   }
 
   void _loadSettings() async {
-    loadAppSettigns();
+    loadAppSettings();
     prefs = await SharedPreferences.getInstance();
     _barcodeSizeController.text = defaultBarcodeSize.toString();
     _objectDetectionConfidence.text = objectDetectionConfidence.toString();

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tswiri_base/colors/colors.dart';
 
 ///Sunbird Theme.
-ThemeData sunbirdTheme = ThemeData(
+ThemeData tswiriTheme = ThemeData(
   brightness: Brightness.dark,
   backgroundColor: Colors.black,
   primaryColor: sunbirdOrange,

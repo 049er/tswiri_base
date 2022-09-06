@@ -1,6 +1,6 @@
 {
-    "name": "server_example",
-    "short_name": "server_example",
+    "name": "desktop_example",
+    "short_name": "desktop_example",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

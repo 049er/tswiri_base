@@ -1,4 +1,4 @@
-name: server_example
+name: desktop_example
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -29,7 +29,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+    
+  tswiri_database:
+      git:
+        url: https://github.com/TswiriSoftware/tswiri_database.git
+        ref: master
+  
+  tswiri_base:
+    path: ../../
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -38,6 +45,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+    
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

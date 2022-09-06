@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tswiri_base/colors/colors.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
+import 'package:tswiri_base/settings/global_settings.dart';
 import 'package:tswiri_database/export.dart';
 import 'package:tswiri_database/functions/get_functions.dart';
 

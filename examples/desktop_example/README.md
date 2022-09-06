@@ -1,4 +1,4 @@
-# server_example
+# desktop_example
 
 A new Flutter project.
 

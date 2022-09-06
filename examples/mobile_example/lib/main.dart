@@ -22,7 +22,7 @@ Future<void> main() async {
   ]);
 
   //Load app settings.
-  await loadAppSettigns();
+  await loadAppSettings();
 
   //Initiate Isar Storage Directories.
   await initiateIsarDirectory();
@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Tswiri Example',
-      theme: sunbirdTheme,
+      theme: tswiriTheme,
       home: const MyHomePage(),
     );
   }
