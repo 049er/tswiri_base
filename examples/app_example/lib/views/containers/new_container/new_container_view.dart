@@ -33,7 +33,7 @@ class _NewContainerViewState extends State<NewContainerView> {
 
   //Container Types.
   late List<ContainerType> containerTypes =
-      appIsar!.containerTypes.where().findAllSync();
+      isar!.containerTypes.where().findAllSync();
 
   late ContainerType selectedContainerType =
       widget.preferredContainerType ?? containerTypes[0];
@@ -242,7 +242,7 @@ class _NewContainerViewState extends State<NewContainerView> {
                         ),
                       );
                       if (scannedBarcodeUID != null) {
-                        CatalogedContainer? catalogedContainer = appIsar!
+                        CatalogedContainer? catalogedContainer = isar!
                             .catalogedContainers
                             .filter()
                             .barcodeUIDMatches(scannedBarcodeUID)
@@ -342,7 +342,7 @@ class _NewContainerViewState extends State<NewContainerView> {
                         ),
                       );
                       if (scannedBarcodeUID != null) {
-                        CatalogedContainer? catalogedContainer = appIsar!
+                        CatalogedContainer? catalogedContainer = isar!
                             .catalogedContainers
                             .filter()
                             .barcodeUIDMatches(scannedBarcodeUID)
@@ -430,7 +430,7 @@ class _NewContainerViewState extends State<NewContainerView> {
     //Container Name.
     String name = _nameController.text;
     if (name.isEmpty) {
-      List<CatalogedContainer> containers = appIsar!.catalogedContainers
+      List<CatalogedContainer> containers = isar!.catalogedContainers
           .filter()
           .containerTypeIDEqualTo(selectedContainerType.id)
           .findAllSync();
@@ -467,7 +467,7 @@ class _NewContainerViewState extends State<NewContainerView> {
         ..barcodeUID = barcodeUID
         ..containerUID = containerUID;
 
-      appIsar!.writeTxnSync((isar) => isar.markers.putSync(marker));
+      isar!.writeTxnSync((isar) => isar.markers.putSync(marker));
     }
 
     Navigator.of(context).pushReplacement(

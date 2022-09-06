@@ -35,7 +35,7 @@ class TagTextPredictorState extends State<TagTextPredictor> {
   final TextEditingController _controller = TextEditingController();
   final FocusNode _focusNode = FocusNode();
 
-  late List<int> tagTextIDs = appIsar!.tagTexts
+  late List<int> tagTextIDs = isar!.tagTexts
       .filter()
       .not()
       .group((q) =>
@@ -143,7 +143,7 @@ class TagTextPredictorState extends State<TagTextPredictor> {
 
   Widget _tagChip(int tagTextID) {
     return ActionChip(
-      label: Text(appIsar!.tagTexts.getSync(tagTextID)!.text),
+      label: Text(isar!.tagTexts.getSync(tagTextID)!.text),
       // backgroundColor: sunbirdOrange,
       onPressed: () {
         widget.onTagAdd(tagTextID);
@@ -158,7 +158,7 @@ class TagTextPredictorState extends State<TagTextPredictor> {
   void _filterTags({String? enteredKeyWord}) {
     if (enteredKeyWord != null && enteredKeyWord.isNotEmpty) {
       setState(() {
-        tagTextIDs = appIsar!.tagTexts
+        tagTextIDs = isar!.tagTexts
             .filter()
             .textContains(enteredKeyWord, caseSensitive: false)
             .and()
@@ -172,7 +172,7 @@ class TagTextPredictorState extends State<TagTextPredictor> {
       });
     } else {
       setState(() {
-        tagTextIDs = appIsar!.tagTexts
+        tagTextIDs = isar!.tagTexts
             .filter()
             .not()
             .group((q) => q.repeat(

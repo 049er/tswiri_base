@@ -5,7 +5,7 @@ class ContainerSearchController {
   late List<CatalogedContainer> searchResults = [];
 
   late List<ContainerType> containerTypes =
-      appIsar!.containerTypes.where().findAllSync();
+      isar!.containerTypes.where().findAllSync();
 
   ///Filters container entries using [ContainerType] and enteredKeyWord [String].
   void filterContainerEntries({
@@ -15,7 +15,7 @@ class ContainerSearchController {
     searchResults.clear();
     if (enteredKeyWord != null && enteredKeyWord.isNotEmpty) {
       searchResults.addAll(
-        appIsar!.catalogedContainers
+        isar!.catalogedContainers
             .filter()
             .group(
               (q) => q.repeat(
@@ -34,7 +34,7 @@ class ContainerSearchController {
       for (var containerType in containerTypes) {
         if (containerFilters.contains(containerType.containerTypeName)) {
           searchResults.addAll(
-            appIsar!.catalogedContainers
+            isar!.catalogedContainers
                 .filter()
                 .containerTypeIDEqualTo(containerType.id)
                 .findAllSync(),

@@ -118,11 +118,11 @@ class ImageData {
       ..photoSize = size;
 
     int photoID = 0;
-    appIsar!.writeTxnSync((isar) {
+    isareTxnSync((isar) {
       photoID = isar.photos.putSync(newPhoto);
     });
 
-    appIsar!.writeTxnSync((isar) {
+    isar!.writeTxnSync((isar) {
       ///Write Photo Labels to Isar.
       for (MLPhotoLabel mlPhotoLabel in mlPhotoLabels) {
         isar.mLPhotoLabels.putSync(
@@ -209,40 +209,40 @@ class ImageData {
     File photoFile = File(photo.getPhotoPath());
 
     List<MLObject> mlObject =
-        appIsar!.mLObjects.filter().photoIDEqualTo(photo.id).findAllSync();
+        isar!.mLObjects.filter().photoIDEqualTo(photo.id).findAllSync();
 
-    List<MLObjectLabel> mlObjectLabels = appIsar!.mLObjectLabels
+    List<MLObjectLabel> mlObjectLabels = isar!.mLObjectLabels
         .filter()
         .repeat(
             mlObject, (q, MLObject element) => q.objectIDEqualTo(element.id))
         .findAllSync();
 
-    List<ObjectLabel> objectLabels = appIsar!.objectLabels
+    List<ObjectLabel> objectLabels = isar!.objectLabels
         .filter()
         .repeat(
             mlObject, (q, MLObject element) => q.objectIDEqualTo(element.id))
         .findAllSync();
 
     List<MLTextElement> mlTextElements =
-        appIsar!.mLTextElements.filter().photoIDEqualTo(photo.id).findAllSync();
+        isar!.mLTextElements.filter().photoIDEqualTo(photo.id).findAllSync();
 
-    List<MLTextLine> mlTextLines = appIsar!.mLTextLines
+    List<MLTextLine> mlTextLines = isar!.mLTextLines
         .filter()
         .repeat(mlTextElements,
             (q, MLTextElement element) => q.idEqualTo(element.lineID))
         .findAllSync();
 
-    List<MLTextBlock> mlTextBlocks = appIsar!.mLTextBlocks
+    List<MLTextBlock> mlTextBlocks = isar!.mLTextBlocks
         .filter()
         .repeat(mlTextLines,
             (q, MLTextLine element) => q.idEqualTo(element.blockID))
         .findAllSync();
 
     List<MLPhotoLabel> mlPhotoLabels =
-        appIsar!.mLPhotoLabels.filter().photoIDEqualTo(photo.id).findAllSync();
+        isar!.mLPhotoLabels.filter().photoIDEqualTo(photo.id).findAllSync();
 
     List<PhotoLabel> photoLabels =
-        appIsar!.photoLabels.filter().photoIDEqualTo(photo.id).findAllSync();
+        isar!.photoLabels.filter().photoIDEqualTo(photo.id).findAllSync();
 
     // log('mlPhotoLabels: ${mlPhotoLabels.length}');
     // log('mlObject: ${mlObject.length}');

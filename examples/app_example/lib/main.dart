@@ -27,13 +27,13 @@ Future<void> main() async {
   await initiatePhotoStorage();
 
   //Initiate Isar.
-  appIsar = initiateIsar();
+  isar = initiateIsar();
 
   //Populate the database for testing.
   createBasicContainerTypes();
   populateDatabase();
 
-  // log(appIsar!.containerRelationships.where().findAllSync().toString());
+  // log(isar!.containerRelationships.where().findAllSync().toString());
 
   //Run app with shoppingcart provider.
   runApp(

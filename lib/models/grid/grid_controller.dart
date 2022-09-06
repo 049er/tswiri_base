@@ -16,14 +16,14 @@ class GridController {
   });
 
   int gridUID;
-  late CatalogedGrid catalogedGrid = appIsar!.catalogedGrids.getSync(gridUID)!;
+  late CatalogedGrid catalogedGrid = isar!.catalogedGrids.getSync(gridUID)!;
 
   late List<Marker> markers = findGridMarkers();
 
   void processData(List<dynamic> barcodeDataBatches) {
     //1. Get the Cataloged Barcodes.
     List<CatalogedBarcode> barcodeProperties =
-        appIsar!.catalogedBarcodes.where().findAllSync();
+        isar!.catalogedBarcodes.where().findAllSync();
 
     //2. Create the onImageBarcodeData.
     List<OnImageInterBarcodeData> onImageInterBarcodeData =
@@ -51,7 +51,7 @@ class GridController {
     );
 
     //6. Create/Update Coordinates.
-    appIsar!.writeTxnSync((isar) {
+    isar!.writeTxnSync((isar) {
       //1. detele IT if IT exists.
       isar.catalogedCoordinates
           .filter()
@@ -63,7 +63,7 @@ class GridController {
       }
     });
 
-    log(appIsar!.catalogedCoordinates.where().findAllSync().toString());
+    log(isar!.catalogedCoordinates.where().findAllSync().toString());
   }
 
   ///Calculates a list of [DisplayPoint] to draw.
@@ -72,7 +72,7 @@ class GridController {
     String? selectedBarcodeUID,
   ) {
     //1. Find all the coordinates in the grid.
-    List<CatalogedCoordinate> coordinates = appIsar!.catalogedCoordinates
+    List<CatalogedCoordinate> coordinates = isar!.catalogedCoordinates
         .filter()
         .gridUIDEqualTo(gridUID)
         .findAllSync();
@@ -87,11 +87,8 @@ class GridController {
     );
 
     //3. List of all marker barcodeUIDs.
-    List<String> markerBarcodeUIDs = appIsar!.markers
-        .where()
-        .findAllSync()
-        .map((e) => e.barcodeUID)
-        .toList();
+    List<String> markerBarcodeUIDs =
+        isar!.markers.where().findAllSync().map((e) => e.barcodeUID).toList();
 
     List<DisplayPoint> myPoints = [];
 
@@ -115,10 +112,10 @@ class GridController {
 
         DisplayPointType displayPointType = DisplayPointType.unkown;
 
-        CatalogedContainer? container = appIsar!.catalogedContainers
+        CatalogedContainer? container = isar!.catalogedContainers
             .filter()
             .barcodeUIDMatches(catalogedCoordinate.barcodeUID)
-            .findFirstSync();
+            .findFirstSync();isar
 
         if (container != null) {
           displayPointType = DisplayPointType.normal;
@@ -148,37 +145,37 @@ class GridController {
   ///Finds all the markers of a given GridUID.
   List<Marker> findGridMarkers() {
     //If you have a grid id.
-    List<CatalogedCoordinate> catalogedCoordinates = appIsar!
+    List<CatalogedCoordinate> catalogedCoordinates = isar!
         .catalogedCoordinates
         .filter()
-        .gridUIDEqualTo(gridUID)
+        .gridUIDEqualTo(gridUID)isar
         .findAllSync();
 
     if (catalogedCoordinates.isNotEmpty) {
-      return appIsar!.markers
+      return isar!.markers
           .filter()
           .repeat(catalogedCoordinates,
-              (q, CatalogedCoordinate e) => q.barcodeUIDMatches(e.barcodeUID))
+             isartalogedCoordinate e) => q.barcodeUIDMatches(e.barcodeUID))
           .findAllSync();
     } else {
       //No Coordinates found so create a marker from the grid barcode.
       CatalogedCoordinate catalogedCoordinate = CatalogedCoordinate()
-        ..barcodeUID = appIsar!.catalogedGrids.getSync(gridUID)!.barcodeUID
+        ..barcodeUID = isar!.catalogedGrids.getSync(gridUID)!.barcodeUID
         ..coordinate = vm.Vector3(0, 0, 0)
         ..gridUID = gridUID
-        ..rotation = null
+        ..rotation = nuisar
         ..timestamp = DateTime.now().millisecondsSinceEpoch;
 
-      appIsar!.writeTxnSync(
+      isar!.writeTxnSync(
           (isar) => isar.catalogedCoordinates.putSync(catalogedCoordinate));
 
-      Marker marker = appIsar!.markers
+      isarmarker = isar!.markers
           .filter()
           .barcodeUIDMatches(
-              appIsar!.catalogedGrids.getSync(gridUID)!.barcodeUID)
+              isar!isargedGrids.getSync(gridUID)!.barcodeUID)
           .findFirstSync()!;
 
-      return [marker];
+      return [isar;
     }
   }
 }

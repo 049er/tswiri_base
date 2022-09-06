@@ -52,7 +52,7 @@ class ContainerCard extends StatelessWidget {
               ),
               Divider(
                 color: colorModeEnabled
-                    ? appIsar!.containerTypes
+                    ? isarainerTypes
                         .getSync(catalogedContainer.containerTypeID)!
                         .containerColor
                     : null,

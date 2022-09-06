@@ -35,7 +35,7 @@ class SearchController {
           filters.contains('Photo Labels') ||
           filters.contains('Object Labels')) {
         //Search TagText Table.
-        List<TagText> tagTexts = appIsar!.tagTexts
+        List<TagText> tagTexts = isar!.tagTexts
             .filter()
             .textContains(enteredKeyword, caseSensitive: false)
             .findAllSync();
@@ -56,7 +56,7 @@ class SearchController {
 
       if (filters.contains('ML Labels')) {
         //Search on MLDetectedLabelText.
-        List<MLDetectedLabelText> mlDetectedLabelTexts = appIsar!
+        List<MLDetectedLabelText> mlDetectedLabelTexts = isar!
             .mLDetectedLabelTexts
             .filter()
             .detectedLabelTextContains(enteredKeyword, caseSensitive: false)
@@ -72,7 +72,7 @@ class SearchController {
       }
 
       if (filters.contains('ML Text')) {
-        List<MLDetectedElementText> mlDetectedElementTexts = appIsar!
+        List<MLDetectedElementText> mlDetectedElementTexts = isar!
             .mLDetectedElementTexts
             .filter()
             .detectedTextContains(enteredKeyword, caseSensitive: false)
@@ -98,7 +98,7 @@ class SearchController {
   //Search on containerNames.
   List<NameResult> nameSearch(String enteredKeyword) {
     //List of containers where name contains enteredKeyword.
-    List<CatalogedContainer> containers = appIsar!.catalogedContainers
+    List<CatalogedContainer> containers = isar!.catalogedContainers
         .filter()
         .nameContains(enteredKeyword, caseSensitive: false)
         .findAllSync();
@@ -117,7 +117,7 @@ class SearchController {
   //Search on containerDescriptions.
   List<DescriptionResult> descriptionSearch(String enteredKeyword) {
     //List of containers where name contains enteredKeyword.
-    List<CatalogedContainer> containers = appIsar!.catalogedContainers
+    List<CatalogedContainer> containers = isar!.catalogedContainers
         .filter()
         .descriptionContains(enteredKeyword, caseSensitive: false)
         .findAllSync();
@@ -140,14 +140,14 @@ class SearchController {
 
     for (TagText tagText in tagTexts) {
       //Find relevant containerTags.
-      List<ContainerTag> containerTags = appIsar!.containerTags
+      List<ContainerTag> containerTags = isar!.containerTags
           .filter()
           .tagTextIDEqualTo(tagText.id)
           .findAllSync();
 
       for (ContainerTag containerTag in containerTags) {
         //Find relevant CatalogedContainer.
-        CatalogedContainer? catalogedContainer = appIsar!.catalogedContainers
+        CatalogedContainer? catalogedContainer = isar!.catalogedContainers
             .filter()
             .containerUIDMatches(containerTag.containerUID)
             .findFirstSync();
@@ -175,15 +175,13 @@ class SearchController {
 
     for (TagText tagText in tagTexts) {
       //Find relevant photoLabels.
-      List<PhotoLabel> photoLabels = appIsar!.photoLabels
-          .filter()
-          .tagTextIDEqualTo(tagText.id)
-          .findAllSync();
+      List<PhotoLabel> photoLabels =
+          isar!.photoLabels.filter().tagTextIDEqualTo(tagText.id).findAllSync();
 
       for (PhotoLabel photoLabel in photoLabels) {
-        Photo? photo = appIsar!.photos.getSync(photoLabel.photoID);
+        Photo? photo = isar!.photos.getSync(photoLabel.photoID);
         if (photo != null) {
-          results.add(PhotoLabelResult(
+          results.add(PisarelResult(
             uid: 'plr_${photoLabel.id}',
             containerUID: photo.containerUID!,
             textSimilarity: enteredKeyword.similarityTo(tagText.text),
@@ -205,19 +203,19 @@ class SearchController {
 
     for (TagText tagText in tagTexts) {
       //Find relevant objectLabels.
-      List<ObjectLabel> objectLabels = appIsar!.objectLabels
+      List<ObjectLabel> objectLabels = isar!.objectLabels
           .filter()
-          .tagTextIDEqualTo(tagText.id)
+          .tagTextIDEqualTo(tagText.id)isar
           .findAllSync();
 
       for (ObjectLabel objectLabel in objectLabels) {
         //Find relevant mlObject.
-        MLObject? mlObject = appIsar!.mLObjects.getSync(objectLabel.objectID);
+        MLObject? mlObject = isar!.mLObjects.getSync(objectLabel.objectID);
         if (mlObject != null) {
-          //Find relevant photo.
-          Photo? photo = appIsar!.photos.getSync(mlObject.photoID);
+          //Find relevant phoisar
+          Photo? photo = isar!.photos.getSync(mlObject.photoID);
           if (photo != null) {
-            //Create ObjectLabelResult.
+            //Create ObjeisarResult.
             results.add(
               ObjectLabelResult(
                 uid: '${photo.containerUID!}_${objectLabel.id}',
@@ -243,16 +241,16 @@ class SearchController {
 
     for (MLDetectedLabelText mlDetectedLabel in mlDetectedLabelTexts) {
       //Find relevant mlPhotoLabels.
-      List<MLPhotoLabel> mlPhotoLabels = appIsar!.mLPhotoLabels
+      List<MLPhotoLabel> mlPhotoLabels = isar!.mLPhotoLabels
           .filter()
-          .detectedLabelTextIDEqualTo(mlDetectedLabel.id)
+          .detectedLabelTextIDEqualTo(mlDisarLabel.id)
           .findAllSync();
 
       for (MLPhotoLabel mlPhotoLabel in mlPhotoLabels) {
         //Find relevant photo.
-        Photo? photo = appIsar!.photos.getSync(mlPhotoLabel.photoID!);
+        Photo? photo = isar!.photos.getSync(mlPhotoLabel.photoID!);
 
-        if (photo != null &&
+        if (photo != nuisar
             mlDetectedLabel.hidden == false &&
             mlPhotoLabel.userFeedback != false) {
           //Create MLPhotoLabelResult.
@@ -278,19 +276,19 @@ class SearchController {
     List<MLObjectLabelResult> results = [];
     for (MLDetectedLabelText mlDetectedLabel in mlDetectedLabelTexts) {
       //Find relevant mlObjectLabels.
-      List<MLObjectLabel> mlObjectLabels = appIsar!.mLObjectLabels
+      List<MLObjectLabel> mlObjectLabels = isar!.mLObjectLabels
           .filter()
-          .detectedLabelTextIDEqualTo(mlDetectedLabel.id)
+          .detectedLabelTextIDEqualTo(mlDetisarbel.id)
           .findAllSync();
 
       for (MLObjectLabel mlObjectLabel in mlObjectLabels) {
         //Find relevant MLObject.
-        MLObject? mlObject = appIsar!.mLObjects.getSync(mlObjectLabel.objectID);
+        MLObject? mlObject = isar!.mLObjects.getSync(mlObjectLabel.objectID);
         if (mlObject != null) {
-          //Find relevant photo.
-          Photo? photo = appIsar!.photos.getSync(mlObject.photoID);
+          //Find relevant phoisar
+          Photo? photo = isar!.photos.getSync(mlObject.photoID);
           if (photo != null && mlObjectLabel.userFeedback != false) {
-            //Create MLObjectLabelResult.
+            //Create MLObisarelResult.
             results.add(
               MLObjectLabelResult(
                 uid: 'mlolr_${mlObjectLabel.id}',
@@ -316,16 +314,16 @@ class SearchController {
     for (MLDetectedElementText mlDetectedElementText
         in mlDetectedElementTexts) {
       //Find relevant mlTextElements.
-      List<MLTextElement> mlTextElements = appIsar!.mLTextElements
+      List<MLTextElement> mlTextElements = isar!.mLTextElements
           .filter()
-          .detectedElementTextIDEqualTo(mlDetectedElementText.id)
+          .detectedElementTextIDEqualTo(mlDisarElementText.id)
           .findAllSync();
 
       for (MLTextElement mlTextElement in mlTextElements) {
         //Find relevent photo.
-        Photo? photo = appIsar!.photos.getSync(mlTextElement.photoID);
+        Photo? photo = isar!.photos.getSync(mlTextElement.photoID);
         if (photo != null) {
-          results.add(
+          results.add(isar
             MLTextResult(
               uid: 'mlter_${mlTextElement.id}',
               containerUID: photo.containerUID!,

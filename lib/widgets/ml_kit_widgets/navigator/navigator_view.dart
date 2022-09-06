@@ -82,7 +82,7 @@ class _NavigatorViewState extends State<NavigatorView> {
       [
         1, //[0] ID
         _uiPort1.sendPort, //[1] SendPort
-        appIsarDirectory!.path, //[2] Isar Directory.
+        isarDirectory!.path, //[2] Isar Directory.
         focalLength, //[3] focalLength
         _catalogedContainer.barcodeUID, //[4] selectedContainer BarcodeUID
         defaultBarcodeSize, //[5]  Default Barcode Size.
@@ -95,7 +95,7 @@ class _NavigatorViewState extends State<NavigatorView> {
       [
         2, //[0] ID
         _uiPort2.sendPort, //[1] SendPort
-        appIsarDirectory!.path, //[2] Isar Directory
+        isarDirectory!.path, //[2] Isar Directory
         focalLength, //[3] focalLength
         _catalogedContainer.barcodeUID, //[4] selectedContainer BarcodeUID
         defaultBarcodeSize, //[5]  Default Barcode Size.
@@ -108,7 +108,7 @@ class _NavigatorViewState extends State<NavigatorView> {
       gridProcessor,
       [
         _uiPort3.sendPort,
-        appIsarDirectory!.path,
+        isarDirectory!.path,
         focalLength,
         defaultBarcodeSize,
       ],
@@ -314,11 +314,10 @@ class _NavigatorViewState extends State<NavigatorView> {
         List<int> gridIDs = message[3];
 
         for (int gridID in gridIDs) {
-          CatalogedGrid? catalogedGrid =
-              appIsar!.catalogedGrids.getSync(gridID);
+          CatalogedGrid? catalogedGrid = isar!.catalogedGrids.getSync(gridID);
           if (catalogedGrid != null) {
-            CatalogedContainer? catalogedContainer = appIsar!
-                .catalogedContainers
+            CatalogedContainer? catalogedContainer = isar!
+                .catalogedContainersisar
                 .filter()
                 .barcodeUIDMatches(catalogedGrid.barcodeUID)
                 .findFirstSync();

@@ -114,7 +114,7 @@ class PhotoEditViewState extends State<PhotoEditView> {
               _imageData.photoLabels.add(newPhotoLabel);
             });
 
-            appIsar!.writeTxn((isar) => isar.photoLabels.put(newPhotoLabel));
+            isar!.writeTxn((isar) => isar.photoLabels.put(newPhotoLabel));
           } else if (isAddingObjectLabel) {
             //Create new Object Label.
             ObjectLabel newObjectLabel = ObjectLabel()
@@ -125,7 +125,7 @@ class PhotoEditViewState extends State<PhotoEditView> {
               _imageData.objectLabels.add(newObjectLabel);
             });
 
-            appIsar!.writeTxn((isar) => isar.objectLabels.put(newObjectLabel));
+            isarriteTxn((isar) => isar.objectLabels.put(newObjectLabel));
           }
         },
       ),
@@ -224,7 +224,7 @@ class PhotoEditViewState extends State<PhotoEditView> {
               photoLabel.userFeedback = true;
             });
             //Write to isar.
-            appIsar!.writeTxnSync((isar) {
+            isar!.writeTxnSync((isar) {
               MLPhotoLabel label = isar.mLPhotoLabels.getSync(photoLabel.id)!;
               label.userFeedback = true;
               isar.mLPhotoLabels.putSync(label, replaceOnConflict: true);
@@ -241,7 +241,7 @@ class PhotoEditViewState extends State<PhotoEditView> {
               photoLabel.userFeedback = false;
             });
             //Write to isar.
-            appIsar!.writeTxnSync((isar) {
+            isar!.writeTxnSync((isar) {
               MLPhotoLabel label = isar.mLPhotoLabels.getSync(photoLabel.id)!;
               label.userFeedback = false;
               isar.mLPhotoLabels.putSync(label, replaceOnConflict: true);
@@ -265,7 +265,7 @@ class PhotoEditViewState extends State<PhotoEditView> {
               photoLabel.userFeedback = null;
             });
             //Write to isar.
-            appIsar!.writeTxnSync((isar) {
+            isar!.writeTxnSync((isar) {
               MLPhotoLabel label = isar.mLPhotoLabels.getSync(photoLabel.id)!;
               label.userFeedback = null;
               isar.mLPhotoLabels.putSync(label, replaceOnConflict: true);
@@ -284,7 +284,7 @@ class PhotoEditViewState extends State<PhotoEditView> {
   Widget _photoLabelChip(PhotoLabel photoLabel) {
     return Chip(
       label: Text(
-        appIsar!.tagTexts.getSync(photoLabel.tagTextID)?.text ?? 'err',
+        isar!.tagTexts.getSync(photoLabel.tagTextID)?.text ?? 'err',
         style: Theme.of(context).textTheme.bodyMedium,
       ),
       avatar: const Icon(Icons.verified_user),
@@ -298,7 +298,7 @@ class PhotoEditViewState extends State<PhotoEditView> {
           _imageData.photoLabels.remove(photoLabel);
         });
         //Write to isar.
-        appIsar!.writeTxnSync((isar) {
+        isar!.writeTxnSync((isar) {
           isar.photoLabels.deleteSync(photoLabel.id);
         });
 
@@ -447,7 +447,7 @@ class PhotoEditViewState extends State<PhotoEditView> {
   Widget _objectLabelChip(ObjectLabel objectLabel) {
     return Chip(
       label: Text(
-        appIsar!.tagTexts.getSync(objectLabel.tagTextID)?.text ?? 'err',
+        isar!.tagTexts.getSync(objectLabel.tagTextID)?.text ?? 'err',
         style: Theme.of(context).textTheme.bodyMedium,
       ),
       avatar: const Icon(Icons.verified_user),

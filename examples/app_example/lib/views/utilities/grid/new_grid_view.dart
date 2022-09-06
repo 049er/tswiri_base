@@ -18,7 +18,7 @@ class NewGridView extends StatefulWidget {
 }
 
 class _NewGridViewState extends State<NewGridView> {
-  late int numOfGrids = appIsar!.catalogedGrids.where().findAllSync().length;
+  late int numOfGrids = isar!.catalogedGrids.where().findAllSync().length;
 
   late String? originBarcodeUID = widget.originBarcodeUID;
   String? parentBarcodeUID;
@@ -110,7 +110,7 @@ class _NewGridViewState extends State<NewGridView> {
                         ),
                       );
                       if (scannedBarcodeUID != null) {
-                        Marker? marker = appIsar!.markers
+                        Marker? marker = isar!.markers
                             .filter()
                             .barcodeUIDMatches(scannedBarcodeUID)
                             .findFirstSync();
@@ -260,7 +260,7 @@ class _NewGridViewState extends State<NewGridView> {
         ..barcodeUID = originBarcodeUID!
         ..parentBarcodeUID = parentBarcodeUID;
 
-      appIsar!.writeTxnSync((isar) {
+      isar!.writeTxnSync((isar) {
         int gridID = isar.catalogedGrids.putSync(catalogedGrid);
 
         Navigator.of(context).pushReplacement(

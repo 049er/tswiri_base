@@ -240,14 +240,13 @@ List<CatalogedCoordinate> generateCoordinates(
 
   //3. Populate the Origin Coordinate.
   int index = coordinates.indexWhere((element) =>
-      element.barcodeUID ==
-      appIsar!.catalogedGrids.getSync(gridUID)!.barcodeUID);
+      element.barcodeUID == isar!.catalogedGrids.getSync(gridUID)!.barcodeUID);
 
   if (index == -1) {
     coordinates.add(
       CatalogedCoordinate()
-        ..barcodeUID = appIsar!.catalogedGrids.getSync(gridUID)!.barcodeUID
-        ..coordinate = vm.Vector3(0, 0, 0)
+        ..barcodeUID = isar!.catalogedGrids.getSync(gridUID)!.barcodeUID
+        ..coordinate = isaror3(0, 0, 0)
         ..gridUID = gridUID
         ..rotation = null
         ..timestamp = DateTime.now().millisecondsSinceEpoch,

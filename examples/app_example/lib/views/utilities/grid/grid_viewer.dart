@@ -31,14 +31,14 @@ class _GirdViewerState extends State<GirdViewer> {
   void initState() {
     _updateMarkers();
 
-    CatalogedGrid targetGrid = appIsar!.catalogedGrids.getSync(gridUID)!;
+    CatalogedGrid targetGrid = isar!.catalogedGrids.getSync(gridUID)!;
 
     log(targetGrid.toString());
 
     List<CatalogedGrid> parentGrids = [];
 
     if (targetGrid.parentBarcodeUID != null) {
-      CatalogedCoordinate? catalogedCoordinate = appIsar!.catalogedCoordinates
+      CatalogedCoordinate? catalogedCoordinate = isar!.catalogedCoordinates
           .filter()
           .barcodeUIDMatches(targetGrid.barcodeUID)
           .findFirstSync();
@@ -46,19 +46,19 @@ class _GirdViewerState extends State<GirdViewer> {
       int i = 1;
       while (catalogedCoordinate != null && i < 100) {
         CatalogedGrid? catalogedGrid =
-            appIsar!.catalogedGrids.getSync(catalogedCoordinate.gridUID);
+            isar!.catalogedGrids.getSync(catalogedCoordinate.gridUID);
 
         if (catalogedGrid != null) {
           parentGrids.add(catalogedGrid);
 
           if (catalogedGrid.parentBarcodeUID != null) {
-            catalogedCoordinate = appIsar!.catalogedCoordinates
+            catalogedCoordinate = isar!.catalogedCoordinates
                 .filter()
                 .barcodeUIDMatches(catalogedGrid.parentBarcodeUID!)
                 .findFirstSync();
             if (catalogedCoordinate != null) {
               catalogedGrid =
-                  appIsar!.catalogedGrids.getSync(catalogedCoordinate.gridUID);
+                  isar!.catalogedGrids.getSync(catalogedCoordinate.gridUID);
             }
           } else {
             catalogedCoordinate = null;
@@ -143,7 +143,7 @@ class _GirdViewerState extends State<GirdViewer> {
               children: [
                 ElevatedButton(
                   onPressed: () async {
-                    appIsar!.writeTxnSync((isar) => isar.catalogedCoordinates
+                    isar!.writeTxnSync((isar) => isar.catalogedCoordinates
                         .filter()
                         .gridUIDEqualTo(gridUID)
                         .deleteAllSync());
@@ -228,7 +228,7 @@ class _GirdViewerState extends State<GirdViewer> {
 
         if (scannedBarcodeUID != null) {
           //Check if the marker exists?
-          Marker? marker = appIsar!.markers
+          Marker? marker = isar!.markers
               .filter()
               .barcodeUIDMatches(scannedBarcodeUID)
               .findFirstSync();
@@ -238,7 +238,7 @@ class _GirdViewerState extends State<GirdViewer> {
               ..containerUID = null
               ..barcodeUID = scannedBarcodeUID;
 
-            appIsar!.writeTxnSync((isar) {
+            isar!.writeTxnSync((isar) {
               isar.markers.putSync(newMarker);
             });
 
@@ -288,7 +288,7 @@ class _GirdViewerState extends State<GirdViewer> {
               visible: !canDeleteMarker(marker),
               child: IconButton(
                 onPressed: () {
-                  appIsar!.writeTxnSync((isar) {
+                  isar!.writeTxnSync((isar) {
                     isar.markers.deleteSync(marker.id);
                     isar.catalogedCoordinates
                         .filter()
@@ -312,14 +312,14 @@ class _GirdViewerState extends State<GirdViewer> {
   void _updateMarkers() {
     setState(() {
       markers.clear();
-      List<String> gridBarcodes = appIsar!.catalogedCoordinates
+      List<String> gridBarcodes = isar!.catalogedCoordinates
           .filter()
           .gridUIDEqualTo(_gridController.gridUID)
           .findAllSync()
           .map((e) => e.barcodeUID)
           .toList();
 
-      markers = appIsar!.markers
+      markers = isar!.markers
           .filter()
           .repeat(
               gridBarcodes, (q, String element) => q.barcodeUIDMatches(element))
@@ -382,7 +382,7 @@ class _GirdViewerState extends State<GirdViewer> {
                         ),
                       );
                       if (scannedBarcodeUID != null) {
-                        Marker? marker = appIsar!.markers
+                        Marker? marker = isar!.markers
                             .filter()
                             .barcodeUIDMatches(scannedBarcodeUID)
                             .findFirstSync();
@@ -402,7 +402,7 @@ class _GirdViewerState extends State<GirdViewer> {
                             ),
                           );
                           setState(() {
-                            appIsar!.writeTxnSync((isar) {
+                            isar!.writeTxnSync((isar) {
                               _gridController.catalogedGrid.barcodeUID =
                                   scannedBarcodeUID;
                               isar.catalogedGrids.putSync(
@@ -412,7 +412,7 @@ class _GirdViewerState extends State<GirdViewer> {
                           });
                         } else {
                           setState(() {
-                            appIsar!.writeTxnSync((isar) {
+                            isar!.writeTxnSync((isar) {
                               _gridController.catalogedGrid.barcodeUID =
                                   scannedBarcodeUID;
                               isar.catalogedGrids.putSync(
@@ -477,7 +477,7 @@ class _GirdViewerState extends State<GirdViewer> {
                         ),
                       );
                       if (scannedBarcodeUID != null) {
-                        Marker? marker = appIsar!.markers
+                        Marker? marker = isar!.markers
                             .filter()
                             .barcodeUIDMatches(scannedBarcodeUID)
                             .findFirstSync();
@@ -497,7 +497,7 @@ class _GirdViewerState extends State<GirdViewer> {
                             ),
                           );
                           setState(() {
-                            appIsar!.writeTxnSync((isar) {
+                            isar!.writeTxnSync((isar) {
                               _gridController.catalogedGrid.parentBarcodeUID =
                                   scannedBarcodeUID;
                               isar.catalogedGrids.putSync(
@@ -507,7 +507,7 @@ class _GirdViewerState extends State<GirdViewer> {
                           });
                         } else {
                           setState(() {
-                            appIsar!.writeTxnSync((isar) {
+                            isar!.writeTxnSync((isar) {
                               _gridController.catalogedGrid.parentBarcodeUID =
                                   scannedBarcodeUID;
                               isar.catalogedGrids.putSync(

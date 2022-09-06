@@ -48,9 +48,6 @@ int isarVersion = 1;
 String? currentSpacePath;
 String currentSpacePathPref = 'currentSpacePath';
 
-///Container Filters
-List<String> containerFilters = ['Area', 'Drawer', 'Shelf', 'Box'];
-
 Future<void> loadAppSettigns() async {
   //Get Camera descriptions.
   cameras = await availableCameras();
@@ -108,3 +105,26 @@ final Map<String, int> barcodesPerPage = {
   'Extra Large': 6,
   'Custom': 100,
 };
+
+List<String> searchFilters = [
+  'Tags',
+  'ML Labels',
+  'Photo Labels',
+  'Object Labels',
+  'Name',
+  'Description',
+  'ML Text',
+];
+
+Map<String, String> filterTypes = {
+  'Tags': 'Search by container tags',
+  'ML Labels': 'Search by photo labels',
+  'Photo Labels': 'Search by User Photo Labels',
+  'Object Labels': 'Search by User Object Labels',
+  'Name': 'Search by container Name',
+  'Description': 'Search by container Description',
+  'ML Text': 'Search by detected text',
+};
+
+///Container Filters
+List<String> containerFilters = ['Area', 'Drawer', 'Shelf', 'Box'];

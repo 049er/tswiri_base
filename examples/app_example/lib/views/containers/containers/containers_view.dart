@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:example/views/containers/container/container_view.dart';
+import 'package:example/views/containers/new_container/new_container_view.dart';
 import 'package:flutter/material.dart';
 import 'package:tswiri_base/models/containers/container_search_controller.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
@@ -69,8 +70,7 @@ class _ContainersViewState extends State<ContainersView> {
             );
 
             if (barcodeUID != null) {
-              CatalogedContainer? catalogedContainer = appIsar!
-                  .catalogedContainers
+              CatalogedContainer? catalogedContainer = isar!.catalogedContainers
                   .filter()
                   .barcodeUIDMatches(barcodeUID)
                   .findFirstSync();
@@ -253,7 +253,20 @@ class _ContainersViewState extends State<ContainersView> {
         if (index == 0 && !isSearching && !isEditing) {
           // return _newContainerCard();
           return NewContainerCard(
-            onTap: () {},
+            onTap: () async {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NewContainerView(),
+                ),
+              );
+              setState(() {
+                _containerSearch.filterContainerEntries(
+                  enteredKeyWord: null,
+                  containerFilters: containerFilters,
+                );
+              });
+            },
           );
         } else if (index > 0) {
           CatalogedContainer catalogedContainer =

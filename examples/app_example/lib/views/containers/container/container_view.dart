@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:example/views/utilities/grid/grid_viewer.dart';
 import 'package:example/views/utilities/grid/new_grid_view.dart';
 import 'package:flutter/material.dart';
@@ -53,34 +52,34 @@ class _ContainerViewState extends State<ContainerView> {
   final GlobalKey<TagTextPredictorState> _tagTextPredictorKey = GlobalKey();
   final GlobalKey<PhotoEditViewState> _photoEditViewKey = GlobalKey();
 
-  late List<ContainerTag> assignedTags = appIsar!.containerTags
+  late List<ContainerTag> assignedTags = isar!.containerTags
       .filter()
       .containerUIDMatches(_catalogedContainer.containerUID)
       .findAllSync();
 
-  late List<Photo> _photos = appIsar!.photos
+  late List<Photo> _photos = isar!.photos
       .filter()
       .containerUIDMatches(_catalogedContainer.containerUID)
       .findAllSync();
 
   late final ContainerType _containerType =
-      appIsar!.containerTypes.getSync(_catalogedContainer.containerTypeID)!;
+      isar!.containerTypes.getSync(_catalogedContainer.containerTypeID)!;
 
   late Color containerColor = _containerType.containerColor;
 
-  late List<ContainerRelationship> containerRelationships = appIsar!
+  late List<ContainerRelationship> containerRelationships = isar!
       .containerRelationships
       .filter()
       .parentUIDMatches(_catalogedContainer.containerUID)
       .findAllSync();
 
-  late ContainerRelationship? _containerRelationship = appIsar!
+  late ContainerRelationship? _containerRelationship = isar!
       .containerRelationships
       .filter()
       .containerUIDMatches(_catalogedContainer.containerUID)
       .findFirstSync();
 
-  late CatalogedCoordinate? catalogedCoordiante = appIsar!.catalogedCoordinates
+  late CatalogedCoordinate? catalogedCoordiante = isar!.catalogedCoordinates
       .filter()
       .barcodeUIDMatches(_catalogedContainer.barcodeUID!)
       .findFirstSync();
@@ -97,7 +96,7 @@ class _ContainerViewState extends State<ContainerView> {
   @override
   void initState() {
     log(_catalogedContainer.containerUID);
-    log(appIsar!.containerRelationships.where().findFirstSync().toString());
+    log(isar!.containerRelationships.where().findAllSync().toString());
     super.initState();
   }
 
@@ -206,7 +205,7 @@ class _ContainerViewState extends State<ContainerView> {
           ..tagTextID = tagTextID;
 
         //Write to isar.
-        appIsar!.writeTxnSync(
+        isar!.writeTxnSync(
             (isar) => isar.containerTags.putSync(newContainerTag));
 
         _updateAssignedTags();
@@ -251,7 +250,7 @@ class _ContainerViewState extends State<ContainerView> {
       label: 'name',
       initialValue: _catalogedContainer.name,
       onSubmitted: (value) {
-        appIsar!.writeTxnSync(
+        isar!.writeTxnSync(
           (isar) {
             _catalogedContainer.name = value;
             isar.catalogedContainers
@@ -267,7 +266,7 @@ class _ContainerViewState extends State<ContainerView> {
       label: 'Description',
       initialValue: _catalogedContainer.description,
       onSubmitted: (value) {
-        appIsar!.writeTxnSync(
+        isar!.writeTxnSync(
           (isar) {
             _catalogedContainer.description = value;
             isar.catalogedContainers
@@ -302,7 +301,7 @@ class _ContainerViewState extends State<ContainerView> {
         );
 
         if (barcodeUID != null) {
-          CatalogedContainer? catalogedContainer = appIsar!.catalogedContainers
+          CatalogedContainer? catalogedContainer = isar!.catalogedContainers
               .filter()
               .barcodeUIDMatches(barcodeUID)
               .findFirstSync();
@@ -316,7 +315,7 @@ class _ContainerViewState extends State<ContainerView> {
 
             if (hasChangedParent == true) {
               setState(() {
-                _containerRelationship = appIsar!.containerRelationships
+                _containerRelationship = isar!.containerRelationships
                     .filter()
                     .containerUIDMatches(_catalogedContainer.containerUID)
                     .findFirstSync();
@@ -379,7 +378,7 @@ class _ContainerViewState extends State<ContainerView> {
   Widget _containerTagChip(ContainerTag containerTag) {
     return Chip(
       label: Text(
-        appIsar!.tagTexts.getSync(containerTag.tagTextID)?.text ?? 'err',
+        isar!.tagTexts.getSync(containerTag.tagTextID)?.text ?? 'err',
         style: Theme.of(context).textTheme.bodyMedium,
       ),
       deleteIcon: const Icon(
@@ -388,7 +387,7 @@ class _ContainerViewState extends State<ContainerView> {
       ),
       onDeleted: () {
         ///Remove the tag from the database.
-        appIsar!.writeTxnSync(
+        isar!.writeTxnSync(
             (isar) => isar.containerTags.deleteSync(containerTag.id));
 
         _updateAssignedTags();
@@ -546,7 +545,7 @@ class _ContainerViewState extends State<ContainerView> {
           MaterialPageRoute(
             builder: (context) => NewContainerView(
               parentContainerUID: _catalogedContainer,
-              preferredContainerType: appIsar!.containerTypes
+              preferredContainerType: isar!.containerTypes
                   .getSync(_containerType.preferredChildContainer),
             ),
           ),
@@ -588,7 +587,7 @@ class _ContainerViewState extends State<ContainerView> {
 
   Widget _childContainerCard(ContainerRelationship relationship) {
     //Container Entry
-    CatalogedContainer catalogedContainer = appIsar!.catalogedContainers
+    CatalogedContainer catalogedContainer = isar!.catalogedContainers
         .filter()
         .containerUIDMatches(relationship.containerUID)
         .findFirstSync()!;
@@ -632,7 +631,7 @@ class _ContainerViewState extends State<ContainerView> {
         children: [
           ElevatedButton(
             onPressed: () {
-              CatalogedCoordinate? catalogedCoordiante = appIsar!
+              CatalogedCoordinate? catalogedCoordiante = isar!
                   .catalogedCoordinates
                   .filter()
                   .barcodeUIDMatches(_catalogedContainer.barcodeUID!)
@@ -669,7 +668,7 @@ class _ContainerViewState extends State<ContainerView> {
   ///Update the list of tags displayed.
   void _updateAssignedTags() {
     setState(() {
-      assignedTags = appIsar!.containerTags
+      assignedTags = isar!.containerTags
           .filter()
           .containerUIDMatches(_catalogedContainer.containerUID)
           .findAllSync();
@@ -679,7 +678,7 @@ class _ContainerViewState extends State<ContainerView> {
   ///Updates the photos.
   void _updatePhotosDisplay() {
     setState(() {
-      _photos = appIsar!.photos
+      _photos = isar!.photos
           .filter()
           .containerUIDMatches(_catalogedContainer.containerUID)
           .findAllSync();
@@ -689,7 +688,7 @@ class _ContainerViewState extends State<ContainerView> {
   ///Updates children.
   void _updateChildrenContainers() {
     setState(() {
-      containerRelationships = appIsar!.containerRelationships
+      containerRelationships = isar!.containerRelationships
           .filter()
           .parentUIDMatches(_catalogedContainer.containerUID)
           .findAllSync();
