@@ -1,7 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'dart:convert';
-import 'package:tswiri_base/models/acceleromter_data.dart';
+import 'package:tswiri_base/models/accelerometer/acceleromter_data.dart';
 import 'package:vector_math/vector_math_64.dart' as vm;
 import 'dart:ui';
 

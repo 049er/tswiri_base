@@ -31,6 +31,8 @@ dependencies:
     git:
       url: https://github.com/TswiriSoftware/tswiri_database.git
       ref: master # branch name
+  flutter_isolate: ^2.0.2
+  sensors_plus: ^1.3.4+1
 
 
 

@@ -1,4 +1,4 @@
-import 'package:tswiri_base/models/vector_related/on_image_barcode_data.dart';
+import 'package:tswiri_base/models/inter_barcode/on_image_barcode_data.dart';
 
 ///Describes the "Offset" between two barcodes.
 class OnImageInterBarcodeData {

@@ -3,9 +3,9 @@
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:tswiri_base/models/vector_related/inter_barcode_vector.dart';
-import 'package:tswiri_base/models/vector_related/on_image_barcode_data.dart';
-import 'package:tswiri_base/models/vector_related/on_image_inter_barcode_data.dart';
+import 'package:tswiri_base/models/inter_barcode/inter_barcode_vector.dart';
+import 'package:tswiri_base/models/inter_barcode/on_image_barcode_data.dart';
+import 'package:tswiri_base/models/inter_barcode/on_image_inter_barcode_data.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
 import 'package:tswiri_database/tswiri_app_database/app_database.dart';
 import 'package:vector_math/vector_math_64.dart' as vm;
@@ -410,4 +410,13 @@ Offset calculateUnitVectors(
   double unitY = height / 2 / totalYdistance;
 
   return Offset(unitX, unitY);
+}
+
+///Calculate the center of the barcode.
+Offset calculateBarcodeCenter(List<Offset> offsetPoints) {
+  return (offsetPoints[0] +
+          offsetPoints[1] +
+          offsetPoints[2] +
+          offsetPoints[3]) /
+      4;
 }
