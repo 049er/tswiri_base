@@ -33,6 +33,8 @@ Future<void> main() async {
   createBasicContainerTypes();
   populateDatabase();
 
+  // log(appIsar!.containerRelationships.where().findAllSync().toString());
+
   //Run app with shoppingcart provider.
   runApp(
     ChangeNotifierProvider(

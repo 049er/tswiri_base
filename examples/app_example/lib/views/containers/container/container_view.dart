@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:example/views/utilities/grid/grid_viewer.dart';
@@ -95,6 +96,8 @@ class _ContainerViewState extends State<ContainerView> {
 
   @override
   void initState() {
+    log(_catalogedContainer.containerUID);
+    log(appIsar!.containerRelationships.where().findFirstSync().toString());
     super.initState();
   }
 

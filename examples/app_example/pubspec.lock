@@ -570,7 +570,7 @@ packages:
   tswiri_base:
     dependency: "direct main"
     description:
-      path: ".."
+      path: "../.."
       relative: true
     source: path
     version: "0.0.1"
@@ -579,7 +579,7 @@ packages:
     description:
       path: "."
       ref: master
-      resolved-ref: "4ce8e0d594d91d7f92c350ba4c9d58666e1aa329"
+      resolved-ref: e123142973f64c1efa7f33d0112a4b0712149fd5
       url: "https://github.com/TswiriSoftware/tswiri_database.git"
     source: git
     version: "0.0.2"
