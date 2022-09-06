@@ -1,4 +1,4 @@
-import 'package:example/views/containers/containers_view.dart';
+import 'package:example/views/containers/containers/containers_view.dart';
 import 'package:example/views/search/search_view.dart';
 import 'package:example/views/settings/settings_view.dart';
 import 'package:example/views/utilities/utilities_view.dart';

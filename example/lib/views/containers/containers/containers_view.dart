@@ -1,9 +1,11 @@
 import 'dart:developer';
 
+import 'package:example/views/containers/container/container_view.dart';
 import 'package:flutter/material.dart';
 import 'package:tswiri_base/models/containers/container_search_controller.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
 import 'package:tswiri_base/widgets/containers/new_container_card.dart';
+import 'package:tswiri_base/widgets/ml_kit_widgets/barcode_scanner/single_scanner_view.dart';
 import 'package:tswiri_database/tswiri_app_database/app_database.dart';
 import 'package:tswiri_base/widgets/containers/container_card.dart';
 import 'package:tswiri_base/widgets/general/search_text_field.dart';
@@ -60,41 +62,42 @@ class _ContainersViewState extends State<ContainersView> {
       actions: [
         IconButton(
           onPressed: () async {
-            // String? barcodeUID = await Navigator.of(context).push(
-            //   MaterialPageRoute(
-            //     builder: (context) => const SingleBarcodeScannerView(),
-            //   ),
-            // );
+            String? barcodeUID = await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const SingleBarcodeScannerView(),
+              ),
+            );
 
-            // if (barcodeUID != null) {
-            //   CatalogedContainer? catalogedContainer = isar!.catalogedContainers
-            //       .filter()
-            //       .barcodeUIDMatches(barcodeUID)
-            //       .findFirstSync();
+            if (barcodeUID != null) {
+              CatalogedContainer? catalogedContainer = appIsar!
+                  .catalogedContainers
+                  .filter()
+                  .barcodeUIDMatches(barcodeUID)
+                  .findFirstSync();
 
-            //   if (catalogedContainer != null && mounted) {
-            //     Navigator.of(context).push(
-            //       MaterialPageRoute(
-            //         builder: (context) =>
-            //             ContainerView(catalogedContainer: catalogedContainer),
-            //       ),
-            //     );
-            //   } else {
-            //     ScaffoldMessenger.of(context).showSnackBar(
-            //       SnackBar(
-            //         content: Row(
-            //           mainAxisAlignment: MainAxisAlignment.center,
-            //           children: const [
-            //             Text(
-            //               'No Linked Container',
-            //               style: TextStyle(fontSize: 16),
-            //             ),
-            //           ],
-            //         ),
-            //       ),
-            //     );
-            //   }
-            // }
+              if (catalogedContainer != null && mounted) {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        ContainerView(catalogedContainer: catalogedContainer),
+                  ),
+                );
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text(
+                          'No Linked Container',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }
+            }
           },
           icon: const Icon(
             Icons.qr_code_2_sharp,
@@ -292,14 +295,14 @@ class _ContainersViewState extends State<ContainersView> {
         });
       }
     } else {
-      // await Navigator.push(
-      //   context,
-      //   MaterialPageRoute(
-      //     builder: (context) => ContainerView(
-      //       catalogedContainer: catalogedContainer,
-      //     ),
-      //   ),
-      // );
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ContainerView(
+            catalogedContainer: catalogedContainer,
+          ),
+        ),
+      );
 
       setState(() {
         _containerSearch.filterContainerEntries(

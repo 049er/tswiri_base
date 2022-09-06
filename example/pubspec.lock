@@ -171,7 +171,7 @@ packages:
     source: sdk
     version: "0.0.0"
   google_mlkit_barcode_scanning:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: google_mlkit_barcode_scanning
       url: "https://pub.dartlang.org"
@@ -185,21 +185,21 @@ packages:
     source: hosted
     version: "0.2.0"
   google_mlkit_image_labeling:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: google_mlkit_image_labeling
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.0"
   google_mlkit_object_detection:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: google_mlkit_object_detection
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.0"
   google_mlkit_text_recognition:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: google_mlkit_text_recognition
       url: "https://pub.dartlang.org"
