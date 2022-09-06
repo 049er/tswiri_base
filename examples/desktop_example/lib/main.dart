@@ -1,9 +1,9 @@
 import 'dart:developer';
 
-import 'package:desktop_example/views/containers_view.dart';
-import 'package:desktop_example/views/devices_view.dart';
-import 'package:desktop_example/views/search_view.dart';
-import 'package:desktop_example/views/settings_view.dart';
+import 'package:desktop_example/views/containers/containers/containers_view.dart';
+import 'package:desktop_example/views/devices/devices_view.dart';
+import 'package:desktop_example/views/search/search_view.dart';
+import 'package:desktop_example/views/settings/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:tswiri_base/settings/desktop_settings.dart';
 import 'package:tswiri_base/theme/theme.dart';

@@ -117,3 +117,64 @@ class _SearchTextFieldState extends State<SearchTextField> {
     }
   }
 }
+
+class FilterBar extends StatefulWidget {
+  const FilterBar({
+    Key? key,
+    required this.filters,
+    required this.filterTypes,
+    required this.filterChange,
+  }) : super(key: key);
+
+  ///Refernece to activeFilters;
+  final List<String> filters;
+
+  ///A list of filters to display.
+  final List<String> filterTypes;
+
+  ///On Filter change
+  final void Function() filterChange;
+
+  @override
+  State<FilterBar> createState() => _FilterBarState();
+}
+
+class _FilterBarState extends State<FilterBar> {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          // spacing: 5,
+          children: widget.filterTypes
+              .map(
+                (filterType) => CustomFilterChip(
+                  label: filterType.capitalizeFirstCharacter(),
+                  toolTip: '',
+                  selected: widget.filters.contains(filterType),
+                  onSelected: (value) {
+                    _onSelected(value, filterType);
+                    widget.filterChange();
+                  },
+                ),
+              )
+              .toList(),
+        ),
+      ),
+    );
+  }
+
+  void _onSelected(bool selected, String filter) {
+    if (widget.filters.contains(filter)) {
+      setState(() {
+        widget.filters.removeWhere((element) => element == filter);
+      });
+    } else {
+      setState(() {
+        widget.filters.add(filter);
+      });
+    }
+  }
+}
