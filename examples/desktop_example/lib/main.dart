@@ -1,5 +1,5 @@
 import 'dart:developer';
-
+import 'package:desktop_example/views/barcodes/barcodes_view.dart';
 import 'package:desktop_example/views/containers/containers/containers_view.dart';
 import 'package:desktop_example/views/devices/devices_view.dart';
 import 'package:desktop_example/views/search/search_view.dart';
@@ -72,6 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
     const SearchView(),
     const ContainersView(),
     const DevicesView(),
+    const BarcodesView(),
     const SettingsView(),
   ];
 
@@ -126,6 +127,11 @@ class _MyHomePageState extends State<MyHomePage> {
           icon: Icon(Icons.devices),
           selectedIcon: Icon(Icons.devices),
           label: Text('Devices'),
+        ),
+        NavigationRailDestination(
+          icon: Icon(Icons.qr_code),
+          selectedIcon: Icon(Icons.qr_code),
+          label: Text('Barcodes'),
         ),
         NavigationRailDestination(
           icon: Icon(Icons.settings),

@@ -28,10 +28,9 @@ class _SelectContainerViewState extends State<SelectContainerView> {
 
   late final CatalogedContainer _currentContainer = widget.currentContainer;
   late final CatalogedContainer? _parentContainer = widget.parentContainer;
-
   @override
   void initState() {
-    _searchController.filterForParentContainer(
+    _searchController.filterWithExclusions(
       currentContainer: _currentContainer,
       parentContainer: _parentContainer,
       enteredKeyWord: null,
@@ -42,25 +41,32 @@ class _SelectContainerViewState extends State<SelectContainerView> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        color: background,
-        child: Column(
-          children: [
-            _searchCard(),
-            _infoCard(),
-            Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.only(bottom: 150),
-                itemCount: _searchController.searchResults.length,
-                itemBuilder: (context, index) {
-                  return _containerCard(_searchController.searchResults[index]);
-                },
+    return Scaffold(
+      body: _body(),
+    );
+  }
+
+  Widget _body() {
+    return Column(
+      children: [
+        _searchCard(),
+        _infoCard(),
+        _searchController.searchResults.isNotEmpty
+            ? Expanded(
+                child: ListView.builder(
+                  padding: const EdgeInsets.only(bottom: 150),
+                  itemCount: _searchController.searchResults.length,
+                  itemBuilder: (context, index) {
+                    return _containerCard(
+                        _searchController.searchResults[index]);
+                  },
+                ),
+              )
+            : Text(
+                'none available',
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
-            ),
-          ],
-        ),
-      ),
+      ],
     );
   }
 
@@ -74,52 +80,59 @@ class _SelectContainerViewState extends State<SelectContainerView> {
           children: [
             Row(
               children: [
-                TextField(
-                  controller: _searchTextController,
-                  onChanged: (value) {
-                    _searchController.filterForParentContainer(
-                      currentContainer: _currentContainer,
-                      parentContainer: _parentContainer,
-                      enteredKeyWord: value,
-                      containerFilters: containerFilters,
-                    );
-                    setState(() {});
-                  },
-                  onSubmitted: (value) {
-                    _searchController.filterForParentContainer(
-                      currentContainer: _currentContainer,
-                      parentContainer: _parentContainer,
-                      enteredKeyWord: value,
-                      containerFilters: containerFilters,
-                    );
-                    setState(() {});
-                  },
+                Flexible(
+                  child: TextField(
+                    controller: _searchTextController,
+                    onChanged: (value) {
+                      _searchController.filterWithExclusions(
+                        currentContainer: _currentContainer,
+                        parentContainer: _parentContainer,
+                        enteredKeyWord: value,
+                        containerFilters: containerFilters,
+                      );
+                      setState(() {});
+                    },
+                    onSubmitted: (value) {
+                      _searchController.filterWithExclusions(
+                        currentContainer: _currentContainer,
+                        parentContainer: _parentContainer,
+                        enteredKeyWord: value,
+                        containerFilters: containerFilters,
+                      );
+                      setState(() {});
+                    },
+                  ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
                   icon: const Icon(
-                    Icons.search,
+                    Icons.cancel,
                   ),
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: FilterBar(
-                filters: containerFilters,
-                filterTypes: _searchController.filterTypes(),
-                filterChange: () {
-                  setState(() {
-                    _searchController.filterForParentContainer(
-                      currentContainer: _currentContainer,
-                      parentContainer: _parentContainer,
-                      enteredKeyWord: _searchTextController.text,
-                      containerFilters: containerFilters,
-                    );
-                  });
-                },
-              ),
-            ),
+
+            // Padding(
+            //   padding: const EdgeInsets.only(top: 8.0),
+            //   child: FilterBar(
+            //     filters: containerFilters,
+            //     filterTypes: _searchController.containerTypes,
+            //     filterChange: () {
+            //       setState(() {
+            //         setState(() {
+            //           _searchController.filterWithExclusions(
+            //             currentContainer: _currentContainer,
+            //             parentContainer: _parentContainer,
+            //             enteredKeyWord: _searchTextController.text,
+            //             containerFilters: containerFilters,
+            //           );
+            //         });
+            //       });
+            //     },
+            //   ),
+            // ),
           ],
         ),
       ),
@@ -131,7 +144,7 @@ class _SelectContainerViewState extends State<SelectContainerView> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const Icon(Icons.info),
             Text(

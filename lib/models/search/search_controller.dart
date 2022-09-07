@@ -106,10 +106,12 @@ class SearchController {
     return containers.map(
       (e) {
         return NameResult(
-            uid: 'nr_${e.id}',
-            containerUID: e.containerUID,
-            textSimilarity: enteredKeyword.similarityTo(e.name),
-            name: e.name ?? 'err');
+          uid: 'nr_${e.id}',
+          containerUID: e.containerUID,
+          textSimilarity: enteredKeyword.similarityTo(e.name),
+          name: e.name ?? 'err',
+          containerTypeID: e.containerTypeID,
+        );
       },
     ).toList();
   }

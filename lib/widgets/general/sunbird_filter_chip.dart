@@ -10,12 +10,14 @@ class CustomFilterChip extends StatelessWidget {
     required this.toolTip,
     required this.selected,
     required this.onSelected,
+    this.color,
   }) : super(key: key);
 
   final String label;
   final String toolTip;
   final bool selected;
   final void Function(bool) onSelected;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +30,13 @@ class CustomFilterChip extends StatelessWidget {
         ),
         onSelected: onSelected,
         selected: selected,
-        selectedColor: sunbirdOrange,
+        selectedColor: color ?? sunbirdOrange,
         tooltip: toolTip,
+        shape: StadiumBorder(
+          side: BorderSide(
+            color: color ?? sunbirdOrange,
+          ),
+        ),
       ),
     );
   }

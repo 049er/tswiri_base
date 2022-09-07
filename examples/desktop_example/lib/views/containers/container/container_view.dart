@@ -24,10 +24,10 @@ class _ContainerViewState extends State<ContainerView> {
       .containerUIDMatches(_catalogedContainer.containerUID)
       .findFirstSync();
 
-  late final CatalogedContainer? _parentContainer = _parentRelationship != null
+  late CatalogedContainer? _parentContainer = _parentRelationship != null
       ? isar!.catalogedContainers
           .filter()
-          .containerUIDMatches(_parentRelationship!.containerUID)
+          .containerUIDMatches(_parentRelationship!.parentUID!)
           .findFirstSync()
       : null;
 
@@ -71,7 +71,7 @@ class _ContainerViewState extends State<ContainerView> {
         children: [
           _nameTextField(),
           _descriptionTextField(),
-          // _parentCard(),
+          _parentCard(),
           // _tagsCard(),
           // _photosCard(),
           // _containerChildren(),
@@ -117,60 +117,61 @@ class _ContainerViewState extends State<ContainerView> {
     );
   }
 
-  // Widget _parentCard() {
-  //   return Card(
-  //     child: Padding(
-  //       padding: const EdgeInsets.all(8.0),
-  //       child: Expanded(
-  //         child: Row(
-  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //           mainAxisSize: MainAxisSize.max,
-  //           children: [
-  //             Text(
-  //               'Parent: ',
-  //               style: Theme.of(context).textTheme.titleMedium,
-  //             ),
-  //             Text(
-  //               _parentContainer?.name ??
-  //                   _parentContainer?.containerUID ??
-  //                   'no parent',
-  //               style: Theme.of(context).textTheme.bodyLarge,
-  //             ),
-  //             ElevatedButton(
-  //               onPressed: () async {
-  //                 if (_parentContainer != null) {
-  //                   //TODO: Change parent.
-  //                   //TODO: make sure to exlude current container and all decendants.
+  Widget _parentCard() {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Text(
+              'Parent: ',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            Text(
+              _parentContainer?.name ??
+                  _parentContainer?.containerUID ??
+                  'no parent',
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                //TODO: Change parent.
+                //TODO: make sure to exlude current container and all decendants.
 
-  //                   CatalogedContainer? selectedParent =
-  //                       await Navigator.of(context).push(
-  //                     MaterialPageRoute(
-  //                       builder: (context) => SelectContainerView(
-  //                         currentContainer: _catalogedContainer,
-  //                         parentContainer: _parentContainer,
-  //                       ),
-  //                     ),
-  //                   );
-  //                 } else {
-  //                   //TODO: Select parent.
+                CatalogedContainer? selectedParent =
+                    await Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SelectContainerView(
+                      currentContainer: _catalogedContainer,
+                      parentContainer: _parentContainer,
+                    ),
+                  ),
+                );
 
-  //                   CatalogedContainer? selectedParent =
-  //                       await Navigator.of(context).push(
-  //                     MaterialPageRoute(
-  //                       builder: (context) => SelectContainerView(
-  //                         currentContainer: _catalogedContainer,
-  //                         parentContainer: _parentContainer,
-  //                       ),
-  //                     ),
-  //                   );
-  //                 }
-  //               },
-  //               child: Text(_parentContainer != null ? 'Change' : 'Select'),
-  //             ),
-  //           ],
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
+                if (selectedParent != null) {
+                  isar!.writeTxnSync((isar) {
+                    isar.containerRelationships
+                        .filter()
+                        .containerUIDMatches(_catalogedContainer.containerUID)
+                        .deleteFirstSync();
+
+                    isar.containerRelationships.putSync(ContainerRelationship()
+                      ..containerUID = _catalogedContainer.containerUID
+                      ..parentUID = selectedParent.containerUID);
+                  });
+
+                  setState(() {
+                    _parentContainer = selectedParent;
+                  });
+                }
+              },
+              child: Text(_parentContainer != null ? 'Change' : 'Select'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

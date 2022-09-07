@@ -95,9 +95,11 @@ class _ContainersViewState extends State<ContainersView> {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
-              child: FilterBar(
+              child: ContainerFilterBar(
                 filters: containerFilters,
-                filterTypes: _searchController.filterTypes(),
+                filterTypes: _searchController.containerTypes
+                    .map((e) => e.containerTypeName)
+                    .toList(),
                 filterChange: () {
                   setState(() {
                     setState(() {
@@ -158,7 +160,14 @@ class _ContainersViewState extends State<ContainersView> {
                   )
                 ],
               ),
-              const Divider(),
+              Divider(
+                color: colorModeEnabled
+                    ? isar!.containerTypes
+                        .getSync(catalogedContainer.containerTypeID)!
+                        .containerColor
+                    : null,
+                thickness: 1,
+              ),
               Text(
                 catalogedContainer.description ?? 'no description',
                 style: Theme.of(context).textTheme.bodyMedium,

@@ -88,7 +88,7 @@ class _SearchViewState extends State<SearchView> {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
-              child: FilterBar(
+              child: SearchFilterBar(
                 filters: searchFilters,
                 filterTypes: filterTypes.entries.map((e) => e.key).toList(),
                 filterChange: () {

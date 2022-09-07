@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:tswiri_base/functions/capitalize_first_character.dart';
 
 import 'package:tswiri_base/colors/colors.dart';
+import 'package:tswiri_base/settings/desktop_settings.dart';
 import 'package:tswiri_base/widgets/general/sunbird_filter_chip.dart';
+import 'package:tswiri_database/export.dart';
 
 class SearchTextField extends StatefulWidget {
   const SearchTextField({
@@ -118,8 +120,8 @@ class _SearchTextFieldState extends State<SearchTextField> {
   }
 }
 
-class FilterBar extends StatefulWidget {
-  const FilterBar({
+class SearchFilterBar extends StatefulWidget {
+  const SearchFilterBar({
     Key? key,
     required this.filters,
     required this.filterTypes,
@@ -136,10 +138,10 @@ class FilterBar extends StatefulWidget {
   final void Function() filterChange;
 
   @override
-  State<FilterBar> createState() => _FilterBarState();
+  State<SearchFilterBar> createState() => _SearchFilterBarState();
 }
 
-class _FilterBarState extends State<FilterBar> {
+class _SearchFilterBarState extends State<SearchFilterBar> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -154,6 +156,74 @@ class _FilterBarState extends State<FilterBar> {
                   label: filterType.capitalizeFirstCharacter(),
                   toolTip: '',
                   selected: widget.filters.contains(filterType),
+                  onSelected: (value) {
+                    _onSelected(value, filterType);
+                    widget.filterChange();
+                  },
+                ),
+              )
+              .toList(),
+        ),
+      ),
+    );
+  }
+
+  void _onSelected(bool selected, String filter) {
+    if (widget.filters.contains(filter)) {
+      setState(() {
+        widget.filters.removeWhere((element) => element == filter);
+      });
+    } else {
+      setState(() {
+        widget.filters.add(filter);
+      });
+    }
+  }
+}
+
+class ContainerFilterBar extends StatefulWidget {
+  const ContainerFilterBar({
+    Key? key,
+    required this.filters,
+    required this.filterTypes,
+    required this.filterChange,
+  }) : super(key: key);
+
+  ///Refernece to activeFilters;
+  final List<String> filters;
+
+  ///A list of filters to display.
+  final List<String> filterTypes;
+
+  ///On Filter change
+  final void Function() filterChange;
+
+  @override
+  State<ContainerFilterBar> createState() => _ContainerFilterBarState();
+}
+
+class _ContainerFilterBarState extends State<ContainerFilterBar> {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          // spacing: 5,
+          children: widget.filterTypes
+              .map(
+                (filterType) => CustomFilterChip(
+                  label: filterType.capitalizeFirstCharacter(),
+                  toolTip: '',
+                  selected: widget.filters.contains(filterType),
+                  color: colorModeEnabled
+                      ? isar!.containerTypes
+                          .filter()
+                          .containerTypeNameMatches(filterType)
+                          .findFirstSync()
+                          ?.containerColor
+                      : null,
                   onSelected: (value) {
                     _onSelected(value, filterType);
                     widget.filterChange();

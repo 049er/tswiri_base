@@ -43,6 +43,7 @@ class NameResult implements Result {
     required this.containerUID,
     required this.textSimilarity,
     required this.name,
+    required this.containerTypeID,
   });
 
   ///The UID of this result. (type_id)
@@ -59,6 +60,8 @@ class NameResult implements Result {
 
   ///The name of the Cataloged Container.
   String name;
+
+  int containerTypeID;
 
   @override
   String toString() {
