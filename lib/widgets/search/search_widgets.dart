@@ -192,8 +192,9 @@ class PhotoLabelResultCard extends StatelessWidget {
             ],
           ),
           ShoppingCartIconButton(
-              containerUID: photoLabelResult.containerUID,
-              item: photoLabelResult),
+            containerUID: photoLabelResult.containerUID,
+            item: photoLabelResult,
+          ),
         ],
       ),
     );

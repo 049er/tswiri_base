@@ -59,4 +59,9 @@ Map<String, String> filterTypes = {
 };
 
 ///Container Filters
-List<String> containerFilters = ['Area', 'Drawer', 'Shelf', 'Box'];
+List<String> containerFilters = [
+  'Area',
+  'Drawer',
+  'Shelf',
+  'Box',
+];

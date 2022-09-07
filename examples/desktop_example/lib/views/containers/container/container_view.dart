@@ -1,3 +1,4 @@
+import 'package:desktop_example/views/containers/select_container/select_container_view.dart';
 import 'package:flutter/material.dart';
 import 'package:tswiri_base/colors/colors.dart';
 import 'package:tswiri_base/widgets/general/custom_text_field.dart';
@@ -16,6 +17,19 @@ class ContainerView extends StatefulWidget {
 
 class _ContainerViewState extends State<ContainerView> {
   late final CatalogedContainer _catalogedContainer = widget.catalogedContainer;
+
+  late final ContainerRelationship? _parentRelationship = isar!
+      .containerRelationships
+      .filter()
+      .containerUIDMatches(_catalogedContainer.containerUID)
+      .findFirstSync();
+
+  late final CatalogedContainer? _parentContainer = _parentRelationship != null
+      ? isar!.catalogedContainers
+          .filter()
+          .containerUIDMatches(_parentRelationship!.containerUID)
+          .findFirstSync()
+      : null;
 
   @override
   void initState() {
@@ -53,20 +67,16 @@ class _ContainerViewState extends State<ContainerView> {
 
   Widget _body() {
     return SingleChildScrollView(
-      child: Padding(
-        padding:
-            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-        child: Column(
-          children: [
-            _nameTextField(),
-            _descriptionTextField(),
-            // _parentCard(),
-            // _tagsCard(),
-            // _photosCard(),
-            // _containerChildren(),
-            // _gridCard(),
-          ],
-        ),
+      child: Column(
+        children: [
+          _nameTextField(),
+          _descriptionTextField(),
+          // _parentCard(),
+          // _tagsCard(),
+          // _photosCard(),
+          // _containerChildren(),
+          // _gridCard(),
+        ],
       ),
     );
   }
@@ -106,4 +116,61 @@ class _ContainerViewState extends State<ContainerView> {
       },
     );
   }
+
+  // Widget _parentCard() {
+  //   return Card(
+  //     child: Padding(
+  //       padding: const EdgeInsets.all(8.0),
+  //       child: Expanded(
+  //         child: Row(
+  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //           mainAxisSize: MainAxisSize.max,
+  //           children: [
+  //             Text(
+  //               'Parent: ',
+  //               style: Theme.of(context).textTheme.titleMedium,
+  //             ),
+  //             Text(
+  //               _parentContainer?.name ??
+  //                   _parentContainer?.containerUID ??
+  //                   'no parent',
+  //               style: Theme.of(context).textTheme.bodyLarge,
+  //             ),
+  //             ElevatedButton(
+  //               onPressed: () async {
+  //                 if (_parentContainer != null) {
+  //                   //TODO: Change parent.
+  //                   //TODO: make sure to exlude current container and all decendants.
+
+  //                   CatalogedContainer? selectedParent =
+  //                       await Navigator.of(context).push(
+  //                     MaterialPageRoute(
+  //                       builder: (context) => SelectContainerView(
+  //                         currentContainer: _catalogedContainer,
+  //                         parentContainer: _parentContainer,
+  //                       ),
+  //                     ),
+  //                   );
+  //                 } else {
+  //                   //TODO: Select parent.
+
+  //                   CatalogedContainer? selectedParent =
+  //                       await Navigator.of(context).push(
+  //                     MaterialPageRoute(
+  //                       builder: (context) => SelectContainerView(
+  //                         currentContainer: _catalogedContainer,
+  //                         parentContainer: _parentContainer,
+  //                       ),
+  //                     ),
+  //                   );
+  //                 }
+  //               },
+  //               child: Text(_parentContainer != null ? 'Change' : 'Select'),
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 }

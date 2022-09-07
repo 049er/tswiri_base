@@ -5,6 +5,8 @@ import 'package:desktop_example/views/devices/devices_view.dart';
 import 'package:desktop_example/views/search/search_view.dart';
 import 'package:desktop_example/views/settings/settings_view.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tswiri_base/models/search/shopping_cart.dart';
 import 'package:tswiri_base/settings/desktop_settings.dart';
 import 'package:tswiri_base/theme/theme.dart';
 import 'package:tswiri_base/colors/colors.dart';
@@ -31,7 +33,12 @@ void main() async {
   createBasicContainerTypes();
   populateDatabase();
 
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ShoppingCart(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

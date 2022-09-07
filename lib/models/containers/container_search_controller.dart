@@ -51,4 +51,42 @@ class ContainerSearchController {
 
     return filterTypes;
   }
+
+  void filterForParentContainer({
+    required String? enteredKeyWord,
+    required List<String> containerFilters,
+    required CatalogedContainer currentContainer,
+    required CatalogedContainer? parentContainer,
+  }) {
+    searchResults.clear();
+    if (enteredKeyWord != null && enteredKeyWord.isNotEmpty) {
+      searchResults.addAll(
+        isar!.catalogedContainers
+            .filter()
+            .group(
+              (q) => q.repeat(
+                containerTypes,
+                (q, ContainerType containerType) => q.optional(
+                  containerFilters.contains(containerType.containerTypeName),
+                  (q) => q.containerTypeIDEqualTo(containerType.id),
+                ),
+              ),
+            )
+            .and()
+            .nameContains(enteredKeyWord, caseSensitive: false)
+            .findAllSync(),
+      );
+    } else {
+      for (var containerType in containerTypes) {
+        if (containerFilters.contains(containerType.containerTypeName)) {
+          searchResults.addAll(
+            isar!.catalogedContainers
+                .filter()
+                .containerTypeIDEqualTo(containerType.id)
+                .findAllSync(),
+          );
+        }
+      }
+    }
+  }
 }
