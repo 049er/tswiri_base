@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:tswiri_database/export.dart';
 import 'package:tswiri_database/functions/find_functions.dart';
 

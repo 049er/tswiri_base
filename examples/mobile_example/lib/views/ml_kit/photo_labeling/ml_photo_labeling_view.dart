@@ -186,16 +186,17 @@ class _MlPhotoLabelingViewState extends State<MlPhotoLabelingView> {
       child: Column(
         children: [
           SizedBox(
-            width: _imageData!.size.height,
-            height: _imageData!.size.width,
+            height: _imageData!.size.height /
+                (_imageData!.size.width / MediaQuery.of(context).size.width),
             child: Stack(
               fit: StackFit.expand,
+              alignment: AlignmentDirectional.center,
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.file(
                     photoFile,
-                    fit: BoxFit.fill,
+                    fit: BoxFit.scaleDown,
                   ),
                 ),
                 CustomPaint(

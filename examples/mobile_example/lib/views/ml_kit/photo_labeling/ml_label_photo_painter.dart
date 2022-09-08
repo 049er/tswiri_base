@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:ui';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class MLLabelPhotoPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     // List<EditableDetectedObject> objects = imageData.objects;
     Size absoluteSize = imageData.size;
+
     InputImageRotation rotation = imageData.rotation;
 
     final Paint objectPaint = Paint()

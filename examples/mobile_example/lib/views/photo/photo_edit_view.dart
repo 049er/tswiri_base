@@ -46,32 +46,7 @@ class PhotoEditViewState extends State<PhotoEditView> {
       child: Column(
         children: [
           ///Photo display && painter.
-          Card(
-            child: SizedBox(
-              width: _photo.photoSize.height,
-              height: _photo.photoSize.width,
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.file(
-                      File(_photo.getPhotoPath()),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  CustomPaint(
-                    painter: MLLabelPhotoPainter(
-                      imageData: _imageData,
-                      showObjects: showObjects,
-                      showText: showText,
-                    ),
-                  ),
-                  _photoNavigation(),
-                ],
-              ),
-            ),
-          ),
+          _photoCard(),
 
           ///Control Bar.
           _controlBar(),
@@ -80,6 +55,35 @@ class PhotoEditViewState extends State<PhotoEditView> {
           _mlTextElementCard(),
           _tagTextPredictor(),
         ],
+      ),
+    );
+  }
+
+  Widget _photoCard() {
+    return Card(
+      child: SizedBox(
+        height: _imageData.size.height /
+            (_imageData.size.width / MediaQuery.of(context).size.width),
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.file(
+                File(_photo.getPhotoPath()),
+                fit: BoxFit.contain,
+              ),
+            ),
+            CustomPaint(
+              painter: MLLabelPhotoPainter(
+                imageData: _imageData,
+                showObjects: showObjects,
+                showText: showText,
+              ),
+            ),
+            _photoNavigation(),
+          ],
+        ),
       ),
     );
   }

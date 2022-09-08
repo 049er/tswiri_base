@@ -1,7 +1,6 @@
 import 'package:desktop_example/views/containers/select_container/select_container_view.dart';
 import 'package:flutter/material.dart';
 import 'package:tswiri_base/colors/colors.dart';
-import 'package:tswiri_base/settings/desktop_settings.dart';
 import 'package:tswiri_base/widgets/general/custom_text_field.dart';
 import 'package:tswiri_base/widgets/general/tag_text_predictor.dart';
 import 'package:tswiri_database/export.dart';
