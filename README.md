@@ -30,6 +30,7 @@ App settings:
  - hasShownGettingStarted (bool).
 
 
+<<<<<<< HEAD
 Desktop settings:
 
 Global settings:
@@ -40,6 +41,8 @@ Global settings:
 - containerFilters (List```(String)```).
 
 
+=======
+>>>>>>> f021febd8e81e153c71e3782daaafc03f23a415a
 ## Additional information
 Some parts depend on tswiri_database.
 
