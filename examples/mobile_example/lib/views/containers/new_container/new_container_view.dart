@@ -110,7 +110,7 @@ class _NewContainerViewState extends State<NewContainerView> {
                       side: BorderSide(
                         color: colorModeEnabled
                             ? selectedContainerColor
-                            : sunbirdOrange,
+                            : tswiriOrange,
                         width: 0.5,
                       ),
                     ),
@@ -156,9 +156,9 @@ class _NewContainerViewState extends State<NewContainerView> {
           labelText: 'Name',
           labelStyle: TextStyle(fontSize: 15, color: Colors.white),
           border:
-              OutlineInputBorder(borderSide: BorderSide(color: sunbirdOrange)),
+              OutlineInputBorder(borderSide: BorderSide(color: tswiriOrange)),
           focusedBorder:
-              OutlineInputBorder(borderSide: BorderSide(color: sunbirdOrange)),
+              OutlineInputBorder(borderSide: BorderSide(color: tswiriOrange)),
         ),
       ),
     );
@@ -178,9 +178,9 @@ class _NewContainerViewState extends State<NewContainerView> {
           labelText: 'Description',
           labelStyle: TextStyle(fontSize: 15, color: Colors.white),
           border:
-              OutlineInputBorder(borderSide: BorderSide(color: sunbirdOrange)),
+              OutlineInputBorder(borderSide: BorderSide(color: tswiriOrange)),
           focusedBorder:
-              OutlineInputBorder(borderSide: BorderSide(color: sunbirdOrange)),
+              OutlineInputBorder(borderSide: BorderSide(color: tswiriOrange)),
         ),
       ),
     );
@@ -191,8 +191,7 @@ class _NewContainerViewState extends State<NewContainerView> {
       shape: RoundedRectangleBorder(
         side: barcodeUID == null
             ? BorderSide(
-                color:
-                    colorModeEnabled ? selectedContainerColor : sunbirdOrange,
+                color: colorModeEnabled ? selectedContainerColor : tswiriOrange,
                 width: 1,
               )
             : const BorderSide(),
@@ -398,7 +397,7 @@ class _NewContainerViewState extends State<NewContainerView> {
               : null,
       shape: StadiumBorder(
         side: BorderSide(
-          color: colorModeEnabled ? selectedContainerColor : sunbirdOrange,
+          color: colorModeEnabled ? selectedContainerColor : tswiriOrange,
         ),
       ),
       onPressed: () async {

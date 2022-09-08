@@ -222,9 +222,9 @@ class _BackupViewState extends State<BackupView> {
                   labelStyle:
                       const TextStyle(fontSize: 15, color: Colors.white),
                   border: const OutlineInputBorder(
-                      borderSide: BorderSide(color: sunbirdOrange)),
+                      borderSide: BorderSide(color: tswiriOrange)),
                   focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: sunbirdOrange)),
+                      borderSide: BorderSide(color: tswiriOrange)),
                 ),
                 controller: _textFieldController,
               ),

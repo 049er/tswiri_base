@@ -2,6 +2,8 @@ import 'dart:developer';
 import 'package:desktop_example/views/barcodes/barcodes_view.dart';
 import 'package:desktop_example/views/containers/containers/containers_view.dart';
 import 'package:desktop_example/views/devices/devices_view.dart';
+import 'package:desktop_example/views/gallery/gallery_view.dart';
+import 'package:desktop_example/views/grids/grids_view.dart';
 import 'package:desktop_example/views/search/search_view.dart';
 import 'package:desktop_example/views/settings/settings_view.dart';
 import 'package:flutter/material.dart';
@@ -18,8 +20,7 @@ import 'package:tswiri_database/test_functions/populate_database.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  //Load app settings.
-  // await load();
+  //Load desktop settings.
   await loadDesktopSettings();
 
   //Initiate Isar Storage Directories.
@@ -43,8 +44,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -68,14 +67,6 @@ class _MyHomePageState extends State<MyHomePage> {
   NavigationRailLabelType labelType = NavigationRailLabelType.all;
   double groupAligment = -1.0;
 
-  List<Widget> pages = [
-    const SearchView(),
-    const ContainersView(),
-    const DevicesView(),
-    const BarcodesView(),
-    const SettingsView(),
-  ];
-
   @override
   void initState() {
     super.initState();
@@ -90,6 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _body() {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _navigationRail(),
         const VerticalDivider(thickness: 1, width: 1),
@@ -99,6 +91,16 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
     );
   }
+
+  List<Widget> pages = [
+    const SearchView(),
+    const ContainersView(),
+    const GalleryView(),
+    const GridsView(),
+    const DevicesView(),
+    const BarcodesView(),
+    const SettingsView(),
+  ];
 
   Widget _navigationRail() {
     return NavigationRail(
@@ -127,6 +129,16 @@ class _MyHomePageState extends State<MyHomePage> {
           icon: Icon(Icons.devices),
           selectedIcon: Icon(Icons.devices),
           label: Text('Devices'),
+        ),
+        NavigationRailDestination(
+          icon: Icon(Icons.photo),
+          selectedIcon: Icon(Icons.photo),
+          label: Text('Gallery'),
+        ),
+        NavigationRailDestination(
+          icon: Icon(Icons.grid_on_sharp),
+          selectedIcon: Icon(Icons.grid_on_sharp),
+          label: Text('Grids'),
         ),
         NavigationRailDestination(
           icon: Icon(Icons.qr_code),

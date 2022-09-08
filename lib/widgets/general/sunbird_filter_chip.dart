@@ -30,11 +30,11 @@ class CustomFilterChip extends StatelessWidget {
         ),
         onSelected: onSelected,
         selected: selected,
-        selectedColor: color ?? sunbirdOrange,
+        selectedColor: color ?? tswiriOrange,
         tooltip: toolTip,
         shape: StadiumBorder(
           side: BorderSide(
-            color: color ?? sunbirdOrange,
+            color: color ?? tswiriOrange,
           ),
         ),
       ),

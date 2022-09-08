@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 //App Colors
-const MaterialColor sunbirdOrange = MaterialColor(
+const MaterialColor tswiriOrange = MaterialColor(
   _sunbirdOrangePrimaryValue,
   <int, Color>{
     50: Color(0xFFFFE5E0),

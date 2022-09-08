@@ -16,7 +16,7 @@ class NewContainerCard extends StatelessWidget {
       child: Card(
         shape: RoundedRectangleBorder(
           side: const BorderSide(
-            color: sunbirdOrange,
+            color: tswiriOrange,
             width: 0.5,
           ),
           borderRadius: BorderRadius.circular(10),

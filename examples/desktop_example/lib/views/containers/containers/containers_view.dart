@@ -36,22 +36,19 @@ class _ContainersViewState extends State<ContainersView> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        color: background,
-        child: Column(
-          children: [
-            _searchCard(),
-            Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.only(bottom: 150),
-                itemCount: _searchController.searchResults.length,
-                itemBuilder: (context, index) {
-                  return _containerCard(_searchController.searchResults[index]);
-                },
-              ),
+      child: Column(
+        children: [
+          _searchCard(),
+          Expanded(
+            child: ListView.builder(
+              padding: const EdgeInsets.only(bottom: 150),
+              itemCount: _searchController.searchResults.length,
+              itemBuilder: (context, index) {
+                return _containerCard(_searchController.searchResults[index]);
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

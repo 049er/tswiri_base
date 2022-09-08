@@ -28,7 +28,7 @@ class ContainerCard extends StatelessWidget {
         shape: isSelected
             ? RoundedRectangleBorder(
                 side: const BorderSide(
-                  color: sunbirdOrange,
+                  color: tswiriOrange,
                   width: 0.5,
                 ),
                 borderRadius: BorderRadius.circular(10),

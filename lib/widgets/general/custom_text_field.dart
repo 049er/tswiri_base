@@ -59,9 +59,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
           labelText: widget.label,
           labelStyle: const TextStyle(fontSize: 15, color: Colors.white),
           border: const OutlineInputBorder(
-              borderSide: BorderSide(color: sunbirdOrange)),
+              borderSide: BorderSide(color: tswiriOrange)),
           focusedBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: sunbirdOrange)),
+              borderSide: BorderSide(color: tswiriOrange)),
         ),
       ),
     );

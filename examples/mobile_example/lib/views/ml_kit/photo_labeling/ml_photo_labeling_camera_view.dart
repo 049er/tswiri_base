@@ -134,7 +134,7 @@ class _MLPhotoLabelingCameraViewState extends State<MLPhotoLabelingCameraView> {
 
   Widget _flash() {
     return FloatingActionButton(
-      backgroundColor: sunbirdOrange,
+      backgroundColor: tswiriOrange,
       heroTag: 'flash',
       child: Icon(
         Platform.isIOS

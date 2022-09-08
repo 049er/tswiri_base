@@ -33,14 +33,14 @@ class NameResultCard extends StatelessWidget {
                 ? isar!.containerTypes
                     .getSync(nameResult.containerTypeID)!
                     .containerColor
-                : sunbirdOrange,
+                : tswiriOrange,
             shape: StadiumBorder(
               side: BorderSide(
                 color: colorModeEnabled
                     ? isar!.containerTypes
                         .getSync(nameResult.containerTypeID)!
                         .containerColor
-                    : sunbirdOrange,
+                    : tswiriOrange,
               ),
             ),
             label: Text(
@@ -122,7 +122,7 @@ class DescriptionResultCard extends StatelessWidget {
         alignment: AlignmentDirectional.center,
         children: [
           Chip(
-            backgroundColor: sunbirdOrange,
+            backgroundColor: tswiriOrange,
             label: Text(
               descriptionResult.description,
               style: Theme.of(context).textTheme.bodyMedium,
@@ -154,7 +154,7 @@ class ContainerTagResultCard extends StatelessWidget {
         alignment: AlignmentDirectional.center,
         children: [
           Chip(
-            backgroundColor: sunbirdOrange,
+            backgroundColor: tswiriOrange,
             label: Text(
               containerTagResult.tag,
               style: Theme.of(context).textTheme.bodyMedium,
@@ -198,7 +198,7 @@ class PhotoLabelResultCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Chip(
-                backgroundColor: sunbirdOrange,
+                backgroundColor: tswiriOrange,
                 label: Text(
                   photoLabelResult.photoLabel,
                   style: Theme.of(context).textTheme.bodyMedium,
@@ -264,7 +264,7 @@ class ObjectLabelResultCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Chip(
-                backgroundColor: sunbirdOrange,
+                backgroundColor: tswiriOrange,
                 label: Text(
                   result.objectLabel,
                   style: Theme.of(context).textTheme.bodyMedium,
@@ -310,7 +310,7 @@ class MLPhotoLabelResultCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Chip(
-                backgroundColor: sunbirdOrange,
+                backgroundColor: tswiriOrange,
                 label: Text(
                   mlphotoLabelResult.mlPhotoLabel,
                   style: Theme.of(context).textTheme.bodyMedium,
@@ -376,7 +376,7 @@ class MLObjectLabelResultCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Chip(
-                backgroundColor: sunbirdOrange,
+                backgroundColor: tswiriOrange,
                 label: Text(
                   result.mlObjectLabel,
                   style: Theme.of(context).textTheme.bodyMedium,
@@ -442,7 +442,7 @@ class MLTextElementResultCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Chip(
-                backgroundColor: sunbirdOrange,
+                backgroundColor: tswiriOrange,
                 label: Text(
                   result.mlText,
                   style: Theme.of(context).textTheme.bodyMedium,

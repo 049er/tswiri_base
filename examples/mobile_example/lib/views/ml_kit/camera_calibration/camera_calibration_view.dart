@@ -7,7 +7,8 @@ import 'package:google_mlkit_barcode_scanning/google_mlkit_barcode_scanning.dart
 import 'package:sensors_plus/sensors_plus.dart';
 import 'package:tswiri_base/colors/colors.dart';
 import 'package:tswiri_base/functions/check_camera_feed.dart';
-import 'package:tswiri_base/models/camera_calibration/camera_calibration.dart';
+import 'package:tswiri_base/models/camera/camera_calibration.dart';
+
 import 'package:vector_math/vector_math_64.dart' as vm;
 
 import 'calibration_camera_view.dart';
@@ -295,7 +296,7 @@ class _CameraCalibrationViewState extends State<CameraCalibrationView> {
       elevation: 5,
       shadowColor: Colors.black26,
       shape: RoundedRectangleBorder(
-        side: const BorderSide(color: sunbirdOrange, width: 1.5),
+        side: const BorderSide(color: tswiriOrange, width: 1.5),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(

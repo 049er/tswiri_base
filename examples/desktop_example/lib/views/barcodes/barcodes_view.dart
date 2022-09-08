@@ -1,7 +1,6 @@
 import 'package:desktop_example/views/barcodes/pdf_view.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:numberpicker/numberpicker.dart';
 import 'package:tswiri_base/colors/colors.dart';
 import 'package:tswiri_base/settings/desktop_settings.dart';
 import 'package:tswiri_database/export.dart';
@@ -561,41 +560,6 @@ class _BarcodesViewState extends State<BarcodesView> {
     _updateBarcodeBatches();
 
     _createPDF(newBarcodeBatch);
-  }
-
-  void _importBarcodes(Set<String> scannedBarcodes) {
-    //Time of creation
-    int timestamp = DateTime.now().millisecondsSinceEpoch;
-
-    List<int> scannedBarcodeIDs =
-        scannedBarcodes.map((e) => int.parse(e.split('_').first)).toList();
-
-    scannedBarcodeIDs.sort();
-
-    BarcodeBatch newBarcodeBatch = BarcodeBatch()
-      ..width = barcodeSize
-      ..height = barcodeSize
-      ..timestamp = timestamp
-      ..imported = true
-      ..rangeStart = scannedBarcodeIDs.first
-      ..rangeEnd = scannedBarcodeIDs.last;
-
-    //Write to database.
-    isar!.writeTxnSync((isar) {
-      int batchID = isar.barcodeBatchs.putSync(newBarcodeBatch);
-
-      for (var scannedBarcode in scannedBarcodes) {
-        isar.catalogedBarcodes.putSync(
-          CatalogedBarcode()
-            ..barcodeUID = scannedBarcode
-            ..width = defaultBarcodeSize
-            ..height = defaultBarcodeSize
-            ..batchID = batchID,
-        );
-      }
-    });
-
-    _updateBarcodeBatches();
   }
 
   void _createPDF(BarcodeBatch barcodeBatch) async {

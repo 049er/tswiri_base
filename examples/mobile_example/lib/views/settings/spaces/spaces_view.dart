@@ -58,7 +58,7 @@ class _SpacesViewState extends State<SpacesView> {
         leading: directory.path == currentSpacePath
             ? const Icon(
                 Icons.square,
-                color: sunbirdOrange,
+                color: tswiriOrange,
               )
             : const Icon(Icons.square),
         title: Text(directory.path.split('/').last),
@@ -101,9 +101,9 @@ class _SpacesViewState extends State<SpacesView> {
                         labelStyle:
                             const TextStyle(fontSize: 15, color: Colors.white),
                         border: const OutlineInputBorder(
-                            borderSide: BorderSide(color: sunbirdOrange)),
+                            borderSide: BorderSide(color: tswiriOrange)),
                         focusedBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(color: sunbirdOrange)),
+                            borderSide: BorderSide(color: tswiriOrange)),
                       ),
                       controller: _textFieldController,
                     ),

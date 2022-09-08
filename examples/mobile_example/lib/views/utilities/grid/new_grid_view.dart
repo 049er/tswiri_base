@@ -62,7 +62,7 @@ class _NewGridViewState extends State<NewGridView> {
       shape: RoundedRectangleBorder(
         side: originBarcodeUID == null
             ? const BorderSide(
-                color: sunbirdOrange,
+                color: tswiriOrange,
                 width: 1,
               )
             : const BorderSide(),
@@ -159,7 +159,7 @@ class _NewGridViewState extends State<NewGridView> {
       shape: RoundedRectangleBorder(
         side: parentBarcodeUID == null
             ? const BorderSide(
-                color: sunbirdOrange,
+                color: tswiriOrange,
                 width: 1,
               )
             : const BorderSide(),
@@ -230,7 +230,7 @@ class _NewGridViewState extends State<NewGridView> {
       labelPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
       shape: const StadiumBorder(
         side: BorderSide(
-          color: sunbirdOrange,
+          color: tswiriOrange,
         ),
       ),
       onPressed: () async {

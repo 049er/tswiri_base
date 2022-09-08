@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:tswiri_base/colors/colors.dart';
 
-class DevicesView extends StatefulWidget {
-  const DevicesView({Key? key}) : super(key: key);
+class GridsView extends StatefulWidget {
+  const GridsView({Key? key}) : super(key: key);
 
   @override
-  State<DevicesView> createState() => _DevicesViewState();
+  State<GridsView> createState() => _GridsViewState();
 }
 
-class _DevicesViewState extends State<DevicesView> {
+class _GridsViewState extends State<GridsView> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Column(
         children: [
-          const Text('Devices'),
+          const Text('Grids'),
         ],
       ),
     );

@@ -5,11 +5,11 @@ import 'package:tswiri_base/colors/colors.dart';
 ThemeData tswiriTheme = ThemeData(
   brightness: Brightness.dark,
   backgroundColor: Colors.black,
-  primaryColor: sunbirdOrange,
+  primaryColor: tswiriOrange,
 
   //ColorScheme.
   colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: sunbirdOrange,
+    primarySwatch: tswiriOrange,
     accentColor: background[400],
     brightness: Brightness.dark,
     backgroundColor: Colors.black,
@@ -31,13 +31,13 @@ ThemeData tswiriTheme = ThemeData(
 
   //Button Theme.
   buttonTheme: const ButtonThemeData(
-    buttonColor: sunbirdOrange,
+    buttonColor: tswiriOrange,
   ),
 
   //ElevatedButton Theme.
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: TextButton.styleFrom(
-      backgroundColor: sunbirdOrange,
+      backgroundColor: tswiriOrange,
       textStyle: const TextStyle(
         fontSize: 16,
       ),
@@ -63,24 +63,24 @@ ThemeData tswiriTheme = ThemeData(
   //TextBox Theme.
   checkboxTheme: CheckboxThemeData(
     checkColor: MaterialStateProperty.all(Colors.white),
-    fillColor: MaterialStateProperty.all(sunbirdOrange),
+    fillColor: MaterialStateProperty.all(tswiriOrange),
   ),
 
   //FloatingActionButton Theme.
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     foregroundColor: Colors.white,
-    backgroundColor: sunbirdOrange,
+    backgroundColor: tswiriOrange,
   ),
 
   //TabBar Theme.
   tabBarTheme: TabBarTheme(
     indicator: const UnderlineTabIndicator(
       borderSide: BorderSide(
-        color: sunbirdOrange,
+        color: tswiriOrange,
         width: 3.5,
       ),
     ),
-    overlayColor: MaterialStateProperty.all(sunbirdOrange),
+    overlayColor: MaterialStateProperty.all(tswiriOrange),
   ),
 
   //Text Theme.
@@ -116,14 +116,14 @@ ThemeData tswiriTheme = ThemeData(
     //headlineSmall.
     headlineSmall: TextStyle(
       fontSize: 20,
-      color: sunbirdOrange,
+      color: tswiriOrange,
       fontWeight: FontWeight.bold,
     ),
   ),
 
   //TextSelection Theme.
   textSelectionTheme: const TextSelectionThemeData(
-    cursorColor: sunbirdOrange,
+    cursorColor: tswiriOrange,
   ),
 
   //InputDecoration Theme.
@@ -138,10 +138,10 @@ ThemeData tswiriTheme = ThemeData(
   //Chip Theme.
   chipTheme: ChipThemeData(
     backgroundColor: background[300],
-    selectedColor: sunbirdOrange,
+    selectedColor: tswiriOrange,
     shape: const StadiumBorder(
       side: BorderSide(
-        color: sunbirdOrange,
+        color: tswiriOrange,
       ),
     ),
   ),

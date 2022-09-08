@@ -577,7 +577,7 @@ class PhotoEditViewState extends State<PhotoEditView> {
                     },
                     icon: const Icon(
                       Icons.chevron_left,
-                      color: sunbirdOrange,
+                      color: tswiriOrange,
                     ),
                   ),
                 ),
@@ -590,7 +590,7 @@ class PhotoEditViewState extends State<PhotoEditView> {
                     },
                     icon: const Icon(
                       Icons.chevron_right,
-                      color: sunbirdOrange,
+                      color: tswiriOrange,
                     ),
                   ),
                 ),

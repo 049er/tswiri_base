@@ -361,7 +361,7 @@ class _ContainerViewState extends State<ContainerView> {
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 backgroundColor:
-                    colorModeEnabled ? containerColor : sunbirdOrange,
+                    colorModeEnabled ? containerColor : tswiriOrange,
                 onPressed: () {
                   setState(() {
                     isAddingTag = true;
@@ -449,7 +449,7 @@ class _ContainerViewState extends State<ContainerView> {
       child: Card(
         shape: RoundedRectangleBorder(
           side: BorderSide(
-            color: colorModeEnabled ? containerColor : sunbirdOrange,
+            color: colorModeEnabled ? containerColor : tswiriOrange,
             width: 1,
           ),
           borderRadius: BorderRadius.circular(10),
@@ -505,7 +505,7 @@ class _ContainerViewState extends State<ContainerView> {
                     _updatePhotosDisplay();
                   },
                   icon: const Icon(Icons.delete),
-                  color: sunbirdOrange,
+                  color: tswiriOrange,
                 ),
               )
             ],
@@ -555,7 +555,7 @@ class _ContainerViewState extends State<ContainerView> {
       child: Card(
         shape: RoundedRectangleBorder(
           side: const BorderSide(
-            color: sunbirdOrange,
+            color: tswiriOrange,
             width: 0.5,
           ),
           borderRadius: BorderRadius.circular(10),
@@ -710,7 +710,7 @@ class _ContainerViewState extends State<ContainerView> {
               },
               child: const Text(
                 'Help',
-                style: TextStyle(color: sunbirdOrange, fontSize: 16),
+                style: TextStyle(color: tswiriOrange, fontSize: 16),
               ),
             ),
           ],

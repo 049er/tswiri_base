@@ -30,25 +30,22 @@ class _SearchViewState extends State<SearchView> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        color: background,
-        child: Column(
-          children: [
-            _searchCard(),
-            Expanded(
-                child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200,
-              ),
-              itemCount: _searchController.searchResults.length,
-              itemBuilder: (context, index) {
-                return _searchResultCard(
-                  _searchController.searchResults[index],
-                );
-              },
-            )),
-          ],
-        ),
+      child: Column(
+        children: [
+          _searchCard(),
+          Expanded(
+              child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 200,
+            ),
+            itemCount: _searchController.searchResults.length,
+            itemBuilder: (context, index) {
+              return _searchResultCard(
+                _searchController.searchResults[index],
+              );
+            },
+          )),
+        ],
       ),
     );
   }

@@ -321,7 +321,7 @@ class _SettingsViewState extends State<SettingsView> {
           },
           icon: const Icon(
             Icons.backup,
-            color: sunbirdOrange,
+            color: tswiriOrange,
             size: 30,
           ),
         ),
@@ -346,7 +346,7 @@ class _SettingsViewState extends State<SettingsView> {
           },
           icon: const Icon(
             Icons.space_dashboard_sharp,
-            color: sunbirdOrange,
+            color: tswiriOrange,
             size: 30,
           ),
         ),
