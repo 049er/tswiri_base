@@ -18,7 +18,7 @@ This package includes reusable widgets and functions.
 ## Usage
 
 App settings:
- - cameras (List<CameraDescription>).
+ - cameras (List'CameraDescription').
  - cameraResolution (ResolutionPreset.max). //TODO: Make editable.
  - defaultBarcodeSize (double). //TODO: Change to height and width.
  - vibrate (bool).
@@ -32,7 +32,6 @@ App settings:
  - hasShownGettingStarted (bool).
  - currentSpacePath (String).
  - containerFilters (List<String>).
-
 
 
 ## Additional information
