@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
+import 'package:example/views/photo/photo_edit_view.dart';
 import 'package:flutter/material.dart';
-import 'package:tswiri_base/widgets/photo/photo_edit_view.dart';
 import 'package:tswiri_database/export.dart';
 
 class GalleryView extends StatefulWidget {

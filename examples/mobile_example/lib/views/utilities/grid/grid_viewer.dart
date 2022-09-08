@@ -1,11 +1,11 @@
 import 'dart:developer';
 
+import 'package:example/views/ml_kit/barcode_scanner/single_scanner_view.dart';
+import 'package:example/views/ml_kit/grid_scanning/grid_scanner_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:tswiri_base/colors/colors.dart';
 import 'package:tswiri_base/models/grid/grid_controller.dart';
-import 'package:tswiri_base/widgets/ml_kit/barcode_scanner/single_scanner_view.dart';
-import 'package:tswiri_base/widgets/ml_kit/grid_scanning/grid_scanner_view.dart';
 import 'package:tswiri_database/export.dart';
 import 'package:tswiri_base/models/grid/grid_painter.dart';
 import 'package:tswiri_database/functions/get_functions.dart';

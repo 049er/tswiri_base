@@ -2,11 +2,11 @@ import 'dart:developer';
 
 import 'package:example/views/containers/container/container_view.dart';
 import 'package:example/views/containers/new_container/new_container_view.dart';
+import 'package:example/views/ml_kit/barcode_scanner/single_scanner_view.dart';
 import 'package:flutter/material.dart';
 import 'package:tswiri_base/models/containers/container_search_controller.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
 import 'package:tswiri_base/widgets/containers/new_container_card.dart';
-import 'package:tswiri_base/widgets/ml_kit/barcode_scanner/single_scanner_view.dart';
 
 import 'package:tswiri_base/widgets/containers/container_card.dart';
 import 'package:tswiri_base/widgets/general/search_text_field.dart';

@@ -1,10 +1,10 @@
+import 'package:example/views/ml_kit/barcode_import/barcode_import_scanner.dart';
 import 'package:example/views/utilities/barcode_generator/pdf_view.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:tswiri_base/colors/colors.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
-import 'package:tswiri_base/widgets/ml_kit/barcode_import/barcode_import_scanner.dart';
 import 'package:tswiri_database/export.dart';
 
 class GeneratorView extends StatefulWidget {

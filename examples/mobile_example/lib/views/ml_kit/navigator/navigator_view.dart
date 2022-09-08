@@ -1,14 +1,14 @@
 import 'dart:developer';
 import 'dart:isolate';
 
+import 'package:example/views/ml_kit/navigator/navigator_camera_view.dart';
+import 'package:example/views/ml_kit/navigator/navigator_painter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_isolate/flutter_isolate.dart';
 
 import 'package:google_mlkit_barcode_scanning/google_mlkit_barcode_scanning.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
-import 'package:tswiri_base/widgets/ml_kit/navigator/navigator_camera_view.dart';
-import 'package:tswiri_base/widgets/ml_kit/navigator/navigator_painter.dart';
 import 'package:tswiri_database/export.dart';
 // ignore: depend_on_referenced_packages
 import 'package:vector_math/vector_math_64.dart' as vm;

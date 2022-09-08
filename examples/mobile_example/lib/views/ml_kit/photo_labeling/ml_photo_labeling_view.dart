@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:camera/camera.dart';
+import 'package:example/views/ml_kit/photo_labeling/ml_label_photo_painter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_image_labeling/google_mlkit_image_labeling.dart';
 import 'package:google_mlkit_object_detection/google_mlkit_object_detection.dart';
@@ -10,7 +11,6 @@ import 'package:tswiri_base/functions/get_model.dart';
 import 'package:tswiri_base/models/image/image_data.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
 import 'package:tswiri_base/widgets/general/tag_text_predictor.dart';
-import 'package:tswiri_base/widgets/ml_kit/photo_labeling/ml_label_photo_painter.dart';
 import 'package:tswiri_database/functions/get_functions.dart';
 import 'package:tswiri_database/export.dart';
 

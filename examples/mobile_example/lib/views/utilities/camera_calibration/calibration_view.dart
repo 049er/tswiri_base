@@ -1,10 +1,11 @@
+import 'package:example/views/ml_kit/camera_calibration/camera_calibration_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:tswiri_base/colors/colors.dart';
 import 'package:tswiri_base/models/camera_calibration/camera_calibration.dart';
 import 'package:tswiri_base/models/camera_calibration/camera_calibration_painter.dart';
 import 'package:tswiri_base/settings/app_settings.dart';
-import 'package:tswiri_base/widgets/ml_kit/camera_calibration/camera_calibration_view.dart';
+
 import 'package:tswiri_database/export.dart';
 
 class CalibrationView extends StatefulWidget {

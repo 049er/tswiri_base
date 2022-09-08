@@ -1,7 +1,8 @@
+import 'package:example/views/ml_kit/barcode_scanner/single_scanner_view.dart';
 import 'package:example/views/utilities/grid/grid_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:tswiri_base/colors/colors.dart';
-import 'package:tswiri_base/widgets/ml_kit/barcode_scanner/single_scanner_view.dart';
+
 import 'package:tswiri_database/export.dart';
 
 class NewGridView extends StatefulWidget {
