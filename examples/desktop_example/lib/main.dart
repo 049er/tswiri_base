@@ -1,4 +1,4 @@
-import 'dart:developer';
+import 'package:desktop_example/photo_test_functions.dart';
 import 'package:desktop_example/views/barcodes/barcodes_view.dart';
 import 'package:desktop_example/views/containers/containers/containers_view.dart';
 import 'package:desktop_example/views/devices/devices_view.dart';
@@ -69,7 +69,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
+    addPhotos();
     super.initState();
+  }
+
+  void addPhotos() async {
+    await addTestPhotos();
   }
 
   @override
@@ -110,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
       onDestinationSelected: (int index) {
         setState(() {
           _selectedIndex = index;
-          log(_selectedIndex.toString());
+          // log(_selectedIndex.toString());
         });
       },
       labelType: labelType,
@@ -126,11 +131,6 @@ class _MyHomePageState extends State<MyHomePage> {
           label: Text('Containers'),
         ),
         NavigationRailDestination(
-          icon: Icon(Icons.devices),
-          selectedIcon: Icon(Icons.devices),
-          label: Text('Devices'),
-        ),
-        NavigationRailDestination(
           icon: Icon(Icons.photo),
           selectedIcon: Icon(Icons.photo),
           label: Text('Gallery'),
@@ -139,6 +139,11 @@ class _MyHomePageState extends State<MyHomePage> {
           icon: Icon(Icons.grid_on_sharp),
           selectedIcon: Icon(Icons.grid_on_sharp),
           label: Text('Grids'),
+        ),
+        NavigationRailDestination(
+          icon: Icon(Icons.devices),
+          selectedIcon: Icon(Icons.devices),
+          label: Text('Devices'),
         ),
         NavigationRailDestination(
           icon: Icon(Icons.qr_code),

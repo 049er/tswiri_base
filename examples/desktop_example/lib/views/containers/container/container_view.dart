@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:desktop_example/views/containers/select_container/select_container_view.dart';
 import 'package:flutter/material.dart';
 import 'package:tswiri_base/colors/colors.dart';
@@ -47,6 +49,11 @@ class _ContainerViewState extends State<ContainerView> {
       isar!.containerTypes.getSync(_catalogedContainer.containerTypeID)!;
 
   late Color containerColor = _containerType.containerColor;
+
+  late List<Photo> _photos = isar!.photos
+      .filter()
+      .containerUIDMatches(_catalogedContainer.containerUID)
+      .findAllSync();
 
   bool isAddingTag = false;
   bool isEditingPhoto = false;
@@ -100,7 +107,7 @@ class _ContainerViewState extends State<ContainerView> {
           _descriptionTextField(),
           _parentCard(),
           _tagsCard(),
-          // _photosCard(),
+          _photosCard(),
           _containerChildren(),
           // _gridCard(),
         ],
@@ -372,6 +379,100 @@ class _ContainerViewState extends State<ContainerView> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _photosCard() {
+    return Card(
+      child: ExpansionTile(
+        leading: const Icon(Icons.photo),
+        title: Text(
+          'Photos',
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        children: [
+          Wrap(
+            children: [
+              for (var photo in _photos) _photoCard(photo),
+            ],
+          ),
+        ],
+      ),
+
+      //  Column(
+      //   children: [
+      //     ListTile(
+      //       leading: const Icon(Icons.photo),
+      //       title: Text(
+      //         'Photos',
+      //         style: Theme.of(context).textTheme.titleMedium,
+      //       ),
+      //     ),
+      // Wrap(
+      //   children: [
+      //     for (var photo in _photos) _photoCard(photo),
+      //   ],
+      // ),
+      //   ],
+      // ),
+
+      // ExpansionTile(
+      //   initiallyExpanded: false,
+      //   backgroundColor: null,
+      //   title: Text(
+      //     'Photos',
+      //     style: Theme.of(context).textTheme.titleSmall,
+      //   ),
+      //   children: [
+      //     const Divider(),
+      // SingleChildScrollView(
+      //   scrollDirection: Axis.horizontal,
+      //   child: Wrap(
+      //     children: [
+      //       for (var photo in _photos) _photoCard(photo),
+      //     ],
+      //   ),
+      // ),
+      //   ],
+      // ),
+    );
+  }
+
+  Widget _photoCard(Photo photo) {
+    return InkWell(
+      onTap: () {
+        setState(() {
+          _photo = photo;
+          isEditingPhoto = true;
+        });
+      },
+      child: Card(
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Stack(
+            alignment: AlignmentDirectional.bottomStart,
+            children: [
+              Image.file(
+                width: 150,
+                height: 250,
+                File(photo.getPhotoPath()),
+                fit: BoxFit.cover,
+              ),
+              Card(
+                color: background[300]!.withAlpha(150),
+                child: IconButton(
+                  onPressed: () {
+                    // deletePhoto(photo);
+                    // _updatePhotosDisplay();
+                  },
+                  icon: const Icon(Icons.delete),
+                  color: tswiriOrange,
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 
